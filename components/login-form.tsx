@@ -11,25 +11,59 @@ import {
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { signInWithEmailAndPassword } from "@/app/auth/sign-in/action";
-import { useActionState } from "react";
-import { Loader2 } from "lucide-react";
+import { FormEvent, useState, useTransition } from "react";
+import { AlertTriangle, Loader2 } from "lucide-react";
+import { Alert, AlertDescription, AlertTitle } from "./ui/alert";
 
 export function LoginForm({
   className,
   ...props
 }: React.ComponentProps<"form">) {
-  const [state, formAction, isPending] = useActionState(
-    signInWithEmailAndPassword,
-    null
-  );
+  // const [{ errors, message, success }, formAction, isPending] = useActionState(
+  //   signInWithEmailAndPassword,
+  //   { success: false, message: null, errors: null }
+  // );
+
+  const [isPending, startTransition] = useTransition();
+  const [{ success, message, errors }, setFormState] = useState<{
+    success: boolean;
+    message: string | null;
+    errors: Record<string, string[]> | null;
+  }>({
+    success: false,
+    message: null,
+    errors: null,
+  });
+
+  async function handleSignIn(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+    const data = new FormData(form);
+
+    startTransition(async () => {
+      const state = await signInWithEmailAndPassword(data);
+
+      setFormState(state);
+    });
+  }
 
   return (
     <form
-      action={formAction}
+      onSubmit={handleSignIn}
       className={cn("flex flex-col gap-6", className)}
       {...props}
     >
-      <h1>{state}</h1>
+      {success === false && message && (
+        <Alert variant="destructive">
+          <AlertTriangle className="size-4" />
+          <AlertTitle>Falha ao entrar!</AlertTitle>
+          <AlertDescription>
+            <p>{message}</p>
+          </AlertDescription>
+        </Alert>
+      )}
+
       <FieldGroup>
         <div className="flex flex-col items-center gap-1 text-center">
           <h1 className="text-2xl font-bold">Acesse sua conta</h1>
@@ -42,10 +76,14 @@ export function LoginForm({
           <Input
             id="email"
             name="email"
-            type="email"
+            type="text"
             placeholder="email@jobble.com.br"
-            required
           />
+          {errors?.email && (
+            <p className="text-xs font-medium text-red-500">
+              {errors.email[0]}
+            </p>
+          )}
         </Field>
         <Field>
           <div className="flex items-center">
@@ -57,11 +95,16 @@ export function LoginForm({
               Esqueceu sua senha?
             </a>
           </div>
-          <Input id="password" name="password" type="password" required />
+          <Input id="password" name="password" type="password" />
+          {errors?.password && (
+            <p className="text-xs font-medium text-red-500">
+              {errors.password[0]}
+            </p>
+          )}
         </Field>
         <Field>
           <Button type="submit" disabled={isPending}>
-            {isPending ? <Loader2 className="size-4 animate-spin"/> : "Entrar"}
+            {isPending ? <Loader2 className="size-4 animate-spin" /> : "Entrar"}
           </Button>
         </Field>
         <FieldSeparator>Ou continue com</FieldSeparator>
