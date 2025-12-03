@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 
-export function LoginForm({
+export function SignupForm({
   className,
   ...props
 }: React.ComponentProps<"form">) {
@@ -17,34 +17,35 @@ export function LoginForm({
     <form className={cn("flex flex-col gap-6", className)} {...props}>
       <FieldGroup>
         <div className="flex flex-col items-center gap-1 text-center">
-          <h1 className="text-2xl font-bold">Acesse sua conta</h1>
+          <h1 className="text-2xl font-bold">Crie sua conta</h1>
           <p className="text-muted-foreground text-sm text-balance">
-            Entre com seu email para acessar sua conta
+            Preencha o formulário abaixo para criar sua conta
           </p>
         </div>
         <Field>
+          <FieldLabel htmlFor="name">Nome Completo</FieldLabel>
+          <Input id="name" type="text" placeholder="José Silva" required />
+        </Field>
+        <Field>
           <FieldLabel htmlFor="email">E-mail</FieldLabel>
-          <Input
-            id="email"
-            type="email"
-            placeholder="email@jobble.com.br"
-            required
-          />
+          <Input id="email" type="email" placeholder="email@jobble.com.br" required />
+          <FieldDescription>
+            Usaremos para entrar em contato com você. Não compartilharemos seu
+            e-mail com mais ninguém.
+          </FieldDescription>
         </Field>
         <Field>
-          <div className="flex items-center">
-            <FieldLabel htmlFor="password">Senha</FieldLabel>
-            <a
-              href="#"
-              className="ml-auto text-sm text-muted-foreground underline-offset-4 hover:underline"
-            >
-              Esqueceu sua senha?
-            </a>
-          </div>
+          <FieldLabel htmlFor="password">Senha</FieldLabel>
           <Input id="password" type="password" required />
+          <FieldDescription>Deve ter no mínimo 8 caracteres.</FieldDescription>
         </Field>
         <Field>
-          <Button type="submit">Entrar</Button>
+          <FieldLabel htmlFor="confirm-password">Confirme sua Senha</FieldLabel>
+          <Input id="confirm-password" type="password" required />
+          <FieldDescription>Por favor confirme sua senha.</FieldDescription>
+        </Field>
+        <Field>
+          <Button type="submit">Cie sua Conta</Button>
         </Field>
         <FieldSeparator>Ou continue com</FieldSeparator>
         <Field>
@@ -72,13 +73,10 @@ export function LoginForm({
                 d="M31.999 12.727c4.698 0 8.916 1.615 12.232 4.786l9.179-9.178C47.868 3.17 40.624 0 31.999 0 19.489 0 8.668 7.17 3.402 17.63l10.691 8.29C16.61 18.356 23.664 12.727 32 12.727Z"
               ></path>
             </svg>
-            Entrar com Google
+            Criar com Google
           </Button>
-          <FieldDescription className="text-center">
-            Não tem uma conta?{" "}
-            <a href="/auth/sign-up" className="underline underline-offset-4">
-              Cadastre-se
-            </a>
+          <FieldDescription className="px-6 text-center">
+            Já tem uma conta? <a href="/auth/sign-in">Entrar</a>
           </FieldDescription>
         </Field>
       </FieldGroup>
