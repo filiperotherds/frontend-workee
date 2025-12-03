@@ -1,3 +1,5 @@
+"use client";
+
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import {
@@ -9,17 +11,25 @@ import {
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { signInWithEmailAndPassword } from "@/app/auth/sign-in/action";
+import { useActionState } from "react";
+import { Loader2 } from "lucide-react";
 
 export function LoginForm({
   className,
   ...props
 }: React.ComponentProps<"form">) {
+  const [state, formAction, isPending] = useActionState(
+    signInWithEmailAndPassword,
+    null
+  );
+
   return (
     <form
-      action={signInWithEmailAndPassword}
+      action={formAction}
       className={cn("flex flex-col gap-6", className)}
       {...props}
     >
+      <h1>{state}</h1>
       <FieldGroup>
         <div className="flex flex-col items-center gap-1 text-center">
           <h1 className="text-2xl font-bold">Acesse sua conta</h1>
@@ -50,7 +60,9 @@ export function LoginForm({
           <Input id="password" name="password" type="password" required />
         </Field>
         <Field>
-          <Button type="submit">Entrar</Button>
+          <Button type="submit" disabled={isPending}>
+            {isPending ? <Loader2 className="size-4 animate-spin"/> : "Entrar"}
+          </Button>
         </Field>
         <FieldSeparator>Ou continue com</FieldSeparator>
         <Field>
