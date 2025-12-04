@@ -1,3 +1,5 @@
+import { BackgroundGradient } from "@/components/background-gradient";
+import PostCard from "@/components/post-card";
 import { SignupForm } from "@/components/signup-form";
 import Link from "next/link";
 
@@ -21,11 +23,20 @@ export default function SignupPage() {
         </div>
       </div>
       <div className="bg-muted relative hidden lg:block">
-        <img
-          src="/placeholder.svg"
-          alt="Image"
-          className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
-        />
+        <div className="absolute inset-0 z-0 w-full h-full">
+          <BackgroundGradient />
+        </div>
+
+        <div className="relative z-10 flex items-center justify-center h-full">
+          <PostCard
+            text={`
+              "A Jobble surgiu como um projeto social inovador, com a missão de 
+              conectar pessoas com segurança e confiança. Hoje somos a maior empresa a 
+              oferecer suporte e ferramentas para prestadores de serviço de todo o 
+              Brasil." - Filipe Rother, CTO da Jobble.
+              `}
+          />
+        </div>
       </div>
     </div>
   );

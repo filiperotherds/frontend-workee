@@ -28,7 +28,11 @@ export default function SignIn() {
         </div>
 
         <div className="relative z-10 flex items-center justify-center h-full">
-          <PostCard />
+          <PostCard
+            text="A Jobble conecta você a profissionais qualificados para qualquer
+          serviço que você precise. Com avaliações reais e preços transparentes,
+          encontrar o profissional ideal nunca foi tão fácil!"
+          />
         </div>
       </div>
     </div>
