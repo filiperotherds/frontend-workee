@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Workee - Profissionais a um clique",
+  title: "Jobble - Profissionais a um clique",
   description: "Encontre profissionais qualificados para qualquer serviço que você precise, com avaliações reais e preços transparentes.",
 };
 
