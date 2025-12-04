@@ -29,10 +29,10 @@ export async function signInWithEmailAndPassword(data: FormData) {
       password,
     });
 
-    (await cookies()).set('token', access_token, {
-        path: '/',
-        maxAge: 60 * 60 * 24 * 7 // 7 days
-    })
+    (await cookies()).set("token", access_token, {
+      path: "/",
+      maxAge: 60 * 60 * 24 * 7, // 7 days
+    });
   } catch (err) {
     if (err instanceof HTTPError) {
       const { message } = await err.response.json();
@@ -47,5 +47,5 @@ export async function signInWithEmailAndPassword(data: FormData) {
     };
   }
 
-  redirect('/')
+  redirect("/");
 }

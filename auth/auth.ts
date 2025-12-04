@@ -14,7 +14,9 @@ export async function auth() {
   }
 
   try {
-    const { user } = await getProfile();
+    const user = await getProfile();
+
+    console.log(user)
 
     return { user };
   } catch (err) {}
