@@ -5,11 +5,11 @@ import Image from "next/image";
 import infoIcon from "@/assets/info-icon.svg";
 import wallet from "@/assets/wallet.svg";
 
-export default function TopBar() {
+export default function Topbar() {
   return (
     <div className="hidden md:flex absolute px-2 w-full h-12 top-0 left-0 bg-blue-950">
       <div className="w-full h-10 flex flex-row items-center justify-between">
-        <Link href="/docs">
+        <Link href="/docs" target="_blank">
           <Button variant="link" size="sm" className="text-white">
             <span>Prestador Seguro</span>
             <Image src={infoIcon} alt="info" className="size-4 invert" />
@@ -17,9 +17,9 @@ export default function TopBar() {
         </Link>
 
         <div className="flex flex-row items-center justify-center gap-1 text-sm text-white">
-          <span>Lançamento da imersão</span>
-          <span className="font-medium"> Curso Jobble</span>
-          <span> - Julho de 2026</span>
+          <span>Já disponível a </span>
+          <span className="font-medium"> aplicação mobile</span>
+          <span> nas lojas de aplicativo!</span>
         </div>
 
         <Link href="/billing">

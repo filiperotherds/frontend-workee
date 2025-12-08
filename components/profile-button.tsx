@@ -39,19 +39,19 @@ export async function ProfileButton() {
         </Avatar>
         <ChevronDown className="size-4 text-muted-foreground" />
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" sideOffset={12}>
-        <DropdownMenuItem asChild>
-          <a href="/api/auth/sign-out">
-            <LogOut className="mr-2 size-4" />
-            Sair
-          </a>
-        </DropdownMenuItem>
-
+      <DropdownMenuContent align="end" sideOffset={12} className="w-56">
         <DropdownMenuItem asChild>
           <Link href="/account/settings">
             <Settings className="mr-2 size-4" />
             Configurações
           </Link>
+        </DropdownMenuItem>
+
+        <DropdownMenuItem asChild>
+          <a href="/api/auth/sign-out">
+            <LogOut className="mr-2 size-4" />
+            Sair
+          </a>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

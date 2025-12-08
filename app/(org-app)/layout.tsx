@@ -5,7 +5,7 @@ import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 
-import TopBar from "@/components/top-bar";
+import Topbar from "@/components/topbar";
 
 export const metadata: Metadata = {
   title: "Jobble",
@@ -28,13 +28,13 @@ export default async function OrgAppLayout({
 
   return (
     <div className="w-full">
-      <TopBar />
+      <Topbar />
       <div className="w-full h-full md:pt-10">
         <Header />
         <SidebarProvider className="min-h-[calc(100svh-64px)] md:min-h-[calc(100svh-104px)]">
           <AppSidebar />
           <main className="w-full">
-            <div className="p-4 items-start justify-start flex flex-col md:flex-row">
+            <div className="w-full p-4 items-start justify-start flex flex-col md:flex-row">
               <SidebarTrigger />
               {children}
             </div>

@@ -1,3 +1,13 @@
+"use client";
+
+import {
+  BanknoteArrowDown,
+  Layers,
+  LayoutDashboard,
+  ReceiptText,
+  User,
+  Wallet,
+} from "lucide-react";
 import OrganizationButton from "./organization-button";
 import { Separator } from "./ui/separator";
 import {
@@ -5,20 +15,103 @@ import {
   SidebarContent,
   SidebarFooter,
   SidebarGroup,
+  SidebarGroupContent,
+  SidebarGroupLabel,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
 } from "./ui/sidebar";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
+
+const navGroups = [
+  {
+    label: "Prestador",
+    items: [
+      {
+        title: "Painel",
+        url: "/organization/dashboard",
+        icon: LayoutDashboard,
+      },
+      {
+        title: "Orçamentos",
+        url: "/organization/estimates",
+        icon: ReceiptText,
+      },
+      {
+        title: "Meus Serviços",
+        url: "/organization/services",
+        icon: Layers,
+      },
+      {
+        title: "Clientes",
+        url: "/organization/customers",
+        icon: User,
+      },
+    ],
+  },
+  {
+    label: "Pagamentos",
+    items: [
+      {
+        title: "Cobranças",
+        url: "/organization/payments",
+        icon: BanknoteArrowDown,
+      },
+      {
+        title: "Carteira",
+        url: "/organization/wallet",
+        icon: Wallet,
+      },
+    ],
+  },
+];
 
 export default function AppSidebar() {
+  const pathname = usePathname();
+
+  const isLinkActive = (url: string) => {
+    if (url === "/") {
+      return pathname === "/";
+    }
+
+    return pathname.startsWith(url);
+  };
+
   return (
     <Sidebar>
       <SidebarContent>
-        <SidebarGroup></SidebarGroup>
+        {navGroups.map((group) => (
+          <SidebarGroup key={group.label}>
+            <SidebarGroupLabel>{group.label}</SidebarGroupLabel>
+            <SidebarGroupContent>
+              <SidebarMenu className="text-muted-foreground text-sm">
+                {group.items.map((item) => {
+                  const isActive = isLinkActive(item.url);
+
+                  return (
+                    <SidebarMenuItem key={item.title}>
+                      <SidebarMenuButton asChild isActive={isActive}>
+                        <Link href={item.url}>
+                          <item.icon size={16} />
+                          <span>{item.title}</span>
+                        </Link>
+                      </SidebarMenuButton>
+                    </SidebarMenuItem>
+                  );
+                })}
+              </SidebarMenu>
+            </SidebarGroupContent>
+          </SidebarGroup>
+        ))}
       </SidebarContent>
+
       <Separator />
+
       <SidebarFooter>
         <div className="p-2 w-full flex flex-col items-start justify-start space-y-4">
           <OrganizationButton />
-
-          <p className="text-sm text-muted-foreground">© 2025 Jobble</p>
+          <p className="text-xs text-muted-foreground">© 2025 Jobble</p>
         </div>
       </SidebarFooter>
     </Sidebar>
