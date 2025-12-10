@@ -5,7 +5,6 @@ import { z } from "zod";
 
 import { signInWithPassword } from "@/http/sign-in-with-password";
 import { HTTPError } from "ky";
-import { redirect } from "next/navigation";
 
 const signInSchema = z.object({
   email: z.string().email({ message: "Endereço de e-mail inválido." }),

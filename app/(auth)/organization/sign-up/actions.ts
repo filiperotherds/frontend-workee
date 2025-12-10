@@ -37,7 +37,7 @@ export async function organizationSignUpAction(data: FormData) {
       name,
       email,
       password,
-      accountType: "BUSINESS",
+      accountType: "ORGANIZATION",
       orgType: "PROVIDER",
     });
   } catch (err) {

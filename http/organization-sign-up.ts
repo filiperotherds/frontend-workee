@@ -4,7 +4,7 @@ interface SignUpRequest {
   name: string;
   email: string;
   password: string;
-  accountType: "INDIVIDUAL" | "BUSINESS";
+  accountType: "INDIVIDUAL" | "ORGANIZATION";
   orgType?: "PROVIDER" | undefined;
 }
 

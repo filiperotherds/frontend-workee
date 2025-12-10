@@ -18,7 +18,8 @@ type NotificationItem = {
 const notifications: NotificationItem[] | null = [
   {
     title: "Bem Vindo(a), Márcio!",
-    content: "Desejamos que sua jornada seja próspera por aqui! Se tiver alguma dúvida, nossa equipe está a disposição para ajudar.",
+    content:
+      "Desejamos que sua jornada seja próspera por aqui! Se tiver alguma dúvida, nossa equipe está a disposição para ajudar.",
     date: "Há 5 min",
   },
 ];

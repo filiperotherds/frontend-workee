@@ -5,6 +5,8 @@ import {
   Layers,
   LayoutDashboard,
   ReceiptText,
+  Ticket,
+  Trophy,
   User,
   Wallet,
 } from "lucide-react";
@@ -65,6 +67,21 @@ const navGroups = [
       },
     ],
   },
+  {
+    label: "Parceiros",
+    items: [
+      {
+        title: "Prêmios",
+        url: "/organization/awards",
+        icon: Trophy,
+      },
+      {
+        title: "Afiliados",
+        url: "/organization/afiliate",
+        icon: Ticket,
+      },
+    ],
+  },
 ];
 
 export default function AppSidebar() {
@@ -85,7 +102,7 @@ export default function AppSidebar() {
           <SidebarGroup key={group.label}>
             <SidebarGroupLabel>{group.label}</SidebarGroupLabel>
             <SidebarGroupContent>
-              <SidebarMenu className="text-muted-foreground text-sm">
+              <SidebarMenu className="text-muted-foreground text-sm font-medium">
                 {group.items.map((item) => {
                   const isActive = isLinkActive(item.url);
 
