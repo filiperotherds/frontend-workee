@@ -112,7 +112,7 @@ O prestador violar os Termos de Uso ou os Padrões da Comunidade.`,
   },
   "apresentacao-tcc-jobble": {
     category: "Documentação de Projeto",
-    title: "Apresentação do TCC – Sistema Jobble",
+    title: "Apresentação do Pré Projeto",
     description:
       "Estrutura documentada da apresentação do Trabalho de Conclusão de Curso sobre o sistema Jobble, organizada por seções temáticas.",
     mainBody: `Esta documentação apresenta, de forma estruturada, o roteiro da apresentação do TCC do sistema Jobble, um sistema para gerenciamento e contratação de serviços na área da construção civil. 
