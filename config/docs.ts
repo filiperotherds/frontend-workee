@@ -1,57 +1,120 @@
+// // config/docs.ts
+// export const docsConfig = [
+//   {
+//     title: "Área do Prestador",
+//     items: [
+//       {
+//         title: "Visão Geral",
+//         href: "/docs/area-do-prestador",
+//       },
+//       {
+//         title: "Prestador Seguro",
+//         href: "/docs/area-do-prestador#prestador-seguro",
+//       },
+//       {
+//         title: "Métricas",
+//         href: "/docs/area-do-prestador#metricas",
+//       },
+//     ],
+//   },
+//   {
+//     title: "Financeiro",
+//     items: [
+//       {
+//         title: "Pagamentos",
+//         href: "/docs/pagamentos",
+//       },
+//       {
+//         title: "Prazos e Taxas",
+//         href: "/docs/pagamentos#prazos",
+//       },
+//     ],
+//   },
+//   {
+//     title: "Prestador Seguro",
+//     items: [
+//       {
+//         title: "Visão Geral e Propósito",
+//         href: "/docs/prestador-seguro",
+//       },
+//       {
+//         title: "Garantia de Recebimento",
+//         href: "/docs/prestador-seguro#recebimento",
+//       },
+//       {
+//         title: `Proteção Contra Cancelamentos e "No-Show"`,
+//         href: "/docs/prestador-seguro#cancelamentos",
+//       },
+//       {
+//         title: "Mediação Especializada de Disputas",
+//         href: "/docs/prestador-seguro#disputas",
+//       },
+//       {
+//         title: "Critérios de Elegibilidade",
+//         href: "/docs/prestador-seguro#elegibilidade",
+//       },
+//     ],
+//   },
+// ];
+
 // config/docs.ts
 export const docsConfig = [
   {
-    title: "Área do Prestador",
+    title: "Apresentação Pré Projeto",
     items: [
       {
         title: "Visão Geral",
-        href: "/docs/area-do-prestador",
+        href: "/docs/apresentacao-tcc-jobble",
       },
       {
-        title: "Prestador Seguro",
-        href: "/docs/area-do-prestador#prestador-seguro",
+        title: "Abertura",
+        href: "/docs/apresentacao-tcc-jobble#abertura",
       },
       {
-        title: "Métricas",
-        href: "/docs/area-do-prestador#metricas",
-      },
-    ],
-  },
-  {
-    title: "Financeiro",
-    items: [
-      {
-        title: "Pagamentos",
-        href: "/docs/pagamentos",
+        title: "Contextualização",
+        href: "/docs/apresentacao-tcc-jobble#contextualizacao",
       },
       {
-        title: "Prazos e Taxas",
-        href: "/docs/pagamentos#prazos",
+        title: "Justificativa",
+        href: "/docs/apresentacao-tcc-jobble#justificativa",
+      },
+      {
+        title: "Objetivos (Gerais e Específicos)",
+        href: "/docs/apresentacao-tcc-jobble#objetivos",
       },
     ],
   },
   {
-    title: "Prestador Seguro",
+    title: "Fundamentação e Metodologia",
     items: [
       {
-        title: "Visão Geral e Propósito",
-        href: "/docs/prestador-seguro",
+        title: "Conceitos e Trabalhos Relacionados",
+        href: "/docs/apresentacao-tcc-jobble#conceitos-trabalhos-relacionados",
       },
       {
-        title: "Garantia de Recebimento",
-        href: "/docs/prestador-seguro#recebimento",
+        title: "Metodologia e Arquitetura do Projeto",
+        href: "/docs/apresentacao-tcc-jobble#metodologia-arquitetura",
+      },
+    ],
+  },
+  {
+    title: "Resultados e Encerramento",
+    items: [
+      {
+        title: "Resultados Esperados (Protótipo do Produto)",
+        href: "/docs/apresentacao-tcc-jobble#resultados-esperados",
       },
       {
-        title: `Proteção Contra Cancelamentos e "No-Show"`,
-        href: "/docs/prestador-seguro#cancelamentos",
+        title: "Cronograma",
+        href: "/docs/apresentacao-tcc-jobble#cronograma",
       },
       {
-        title: "Mediação Especializada de Disputas",
-        href: "/docs/prestador-seguro#disputas",
+        title: "Referências",
+        href: "/docs/apresentacao-tcc-jobble#referencias",
       },
       {
-        title: "Critérios de Elegibilidade",
-        href: "/docs/prestador-seguro#elegibilidade",
+        title: "Fechamento",
+        href: "/docs/apresentacao-tcc-jobble#fechamento",
       },
     ],
   },
