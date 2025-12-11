@@ -24,10 +24,10 @@ export default async function PromotionalCard() {
             className="w-16 dark:invert"
           />
           <div className="flex flex-col items-start justify-center space-y-4">
-            <h1 className="text-4xl font-bold text-zinc-700">
+            <h1 className="text-xl md:text-4xl font-bold text-zinc-700">
               Bem-vindo(a) de volta, {firstName}!
             </h1>
-            <span className="text-base text-muted-foreground">
+            <span className="text-xs md:text-base text-muted-foreground">
               Gerencie seus projetos pela Jobble e construa o seu portifólio na maior rede de prestadores do Brasil. 
             </span>
           </div>

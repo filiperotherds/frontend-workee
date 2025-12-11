@@ -1,5 +1,5 @@
 import DashboardCards from "@/components/dashboard-cards";
-import PromotionalCard from "@/components/promotional-card";
+import PromotionalCard from "@/components/welcome-card";
 
 export default async function Dashboard() {
   return (
