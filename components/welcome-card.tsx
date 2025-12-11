@@ -15,7 +15,7 @@ export default async function PromotionalCard() {
   const [firstName, ...fullName] = name?.split(" ");
 
   return (
-    <div className="w-full aspect-10/2 p-6 rounded-md bg-zinc-100">
+    <div className="w-full aspect-10/4 md:aspect-10/2 p-6 rounded-md bg-zinc-100">
       <div className="h-full w-full flex flex-row items-center justify-between">
         <div className="h-full flex flex-col items-start justify-between">
           <Image
@@ -23,7 +23,7 @@ export default async function PromotionalCard() {
             alt="Jobble"
             className="w-16 dark:invert"
           />
-          <div className="flex flex-col items-start justify-center space-y-4">
+          <div className="flex flex-col items-start justify-center space-y-2 md:space-y-4">
             <h1 className="text-xl md:text-4xl font-bold text-zinc-700">
               Bem-vindo(a) de volta, {firstName}!
             </h1>
