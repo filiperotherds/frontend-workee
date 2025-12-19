@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import { Button } from "./ui/button";
 import { ArrowUpRight } from "lucide-react";
@@ -75,11 +73,11 @@ export default function Hero() {
             </Button>
           </Link>
 
-          <div className="w-full flex flex-col items-center justify-center space-y-8 py-8">
+          <div className="w-full flex flex-col items-center justify-center space-y-8 pt-8">
             <h2 className="text-zinc-300 font-medium">Projeto apoiado por</h2>
             <LogoLoop
               logos={techLogos}
-              speed={120}
+              speed={60}
               direction="right"
               logoHeight={48}
               gap={40}
