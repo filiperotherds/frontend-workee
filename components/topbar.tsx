@@ -7,7 +7,7 @@ import { Sparkles } from "lucide-react";
 
 export default function Topbar() {
   return (
-    <div className="absolute px-2 w-full h-12 top-0 left-0 bg-blue-950">
+    <div className="absolute px-2 w-full h-12 top-0 left-0 bg-theme-secondary">
       <div className="w-full h-10 flex flex-row items-center justify-center md:justify-between">
         <Link
           href="/docs/prestador-seguro"
