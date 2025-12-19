@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { Button } from "./ui/button";
 import { ArrowUpRight } from "lucide-react";
@@ -9,6 +11,7 @@ import logo02 from "@/assets/logos/logoipsum-372.svg";
 import logo03 from "@/assets/logos/logoipsum-393.svg";
 import logo04 from "@/assets/logos/logoipsum-404.svg";
 import logo05 from "@/assets/logos/logoipsum-410.svg";
+import SplitText from "./SplitText";
 
 const techLogos = [
   {
@@ -51,9 +54,19 @@ export default function Hero() {
       </div>
       <div className="z-10 w-full max-w-[1200px] h-auto flex items-center justify-center">
         <div className="w-full flex flex-col items-center justify-center space-y-10">
-          <h1 className="text-white text-7xl font-extrabold text-center max-w-[600px]">
-            Para quem faz o Brasil acontecer
-          </h1>
+          <SplitText
+            text="Para quem faz o Brasil acontecer"
+            className="text-white text-7xl font-extrabold text-center max-w-[600px]"
+            delay={100}
+            duration={0.4}
+            ease="power3.out"
+            splitType="chars"
+            from={{ opacity: 0, y: 40 }}
+            to={{ opacity: 1, y: 0 }}
+            threshold={0.1}
+            rootMargin="-100px"
+            textAlign="center"
+          />
 
           <p className="text-white/80 text-lg leading-8 text-center max-w-[600px]">
             Alcance a visibilidade que seu trabalho merece e profissionalize
@@ -66,7 +79,7 @@ export default function Hero() {
             <Button
               variant={"default"}
               size={"lg"}
-              className="text-theme-secondary"
+              className="text-theme-secondary transition-transform duration-300 ease-in-out hover:scale-110"
             >
               Comece sem Custos
               <ArrowUpRight />
@@ -80,7 +93,7 @@ export default function Hero() {
               speed={60}
               direction="right"
               logoHeight={48}
-              gap={40}
+              gap={80}
               hoverSpeed={0}
               scaleOnHover
               fadeOut

@@ -17,10 +17,10 @@ import {
 
 const components: { title: string; href: string; description: string }[] = [
   {
-    title: "Alert Dialog",
-    href: "/docs/primitives/alert-dialog",
+    title: "Gerador de Orçamentos",
+    href: "/docs/features/estimate",
     description:
-      "A modal dialog that interrupts the user with important content and expects a response.",
+      "Crie orçamentos personalizados de forma rápida e eficiente, facilitando a estimativa de custos para projetos e serviços.",
   },
   {
     title: "Hover Card",
