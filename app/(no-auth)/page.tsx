@@ -4,6 +4,7 @@ import LandingHeader from '@/components/landing/landing-header';
 import ResultInfo from '@/components/landing/result-info';
 import Sponsors from '@/components/landing/sponsors';
 import StepsInfo from '@/components/landing/steps-info';
+import Testimonials from '@/components/landing/testimonials';
 
 export default function Home() {
 	return (
@@ -14,6 +15,7 @@ export default function Home() {
 			<ResultInfo />
 			<StepsInfo />
 			<FeaturesSection />
+			<Testimonials />
 		</div>
 	);
 }

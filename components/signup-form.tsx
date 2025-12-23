@@ -113,7 +113,7 @@ export function SignupForm({
           <FieldDescription>Por favor confirme sua senha.</FieldDescription>
         </Field>
         <Field>
-          <Button type="submit" disabled={isPending}>
+          <Button type="submit" disabled={isPending} className="bg-theme-primary hover:bg-theme-primary/80 text-primary">
             {isPending ? (
               <Loader2 className="size-4 animate-spin" />
             ) : (
