@@ -1,4 +1,4 @@
-import GlobalSection from '@/components/landing/global-section';
+import FeaturesSection from '@/components/landing/features-section';
 import Hero from '@/components/landing/hero';
 import LandingHeader from '@/components/landing/landing-header';
 import ResultInfo from '@/components/landing/result-info';
@@ -13,7 +13,7 @@ export default function Home() {
 			<Sponsors />
 			<ResultInfo />
 			<StepsInfo />
-			<GlobalSection />
+			<FeaturesSection />
 		</div>
 	);
 }

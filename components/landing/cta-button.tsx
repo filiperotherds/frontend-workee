@@ -3,7 +3,11 @@
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
 
-export default function CtaButton() {
+type CtaButtonProps = {
+	title: string;
+};
+
+export default function CtaButton({ title }: CtaButtonProps) {
 	return (
 		<div className='w-full'>
 			<div className='relative group w-full md:w-2/3 h-16'>
@@ -18,7 +22,7 @@ export default function CtaButton() {
 					<div className='w-full h-full flex flex-row items-end justify-start px-3 py-2'>
 						<div className='flex flex-row items-center justify-center space-x-2 text-white'>
 							<span className='font-mono font-medium text-[#24292f] tracking-wide'>
-								VAMOS COMEÇAR
+								{title}
 							</span>
 							<ArrowUpRight
 								size={18}
