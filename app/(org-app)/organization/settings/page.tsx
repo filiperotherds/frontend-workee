@@ -1,4 +1,4 @@
-export default function Estimates() {
+export default function Settings() {
   return (
     <div>
       

@@ -2,11 +2,9 @@ import Link from "next/link";
 import { Button } from "./ui/button";
 import { ChevronRight } from "lucide-react";
 
-type EstimateCardProps = {
-  totalEstimate: number;
-};
+const totalEstimate = 8273.24
 
-export default function EstimateCard({ totalEstimate }: EstimateCardProps) {
+export default function EstimateCard() {
   return (
     <div className="w-full flex flex-col items-start justify-start space-y-2">
       <h1 className="text-sm text-muted-foreground font-medium">

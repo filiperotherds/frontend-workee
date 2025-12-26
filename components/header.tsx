@@ -1,3 +1,5 @@
+'use client'
+
 import { ProfileButton } from './profile-button';
 import Notification from './notification';
 import { LucideIcon } from 'lucide-react';
@@ -7,7 +9,7 @@ type HeaderProps = {
 	icon: LucideIcon;
 };
 
-export default function Header({ pageTitle, icon: Icon }: HeaderProps) {
+export default function Header() {
 	return (
 		<div className='md:sticky top-0 z-20 w-full h-16 px-8 flex items-center justify-between rounded-t-lg bg-secondary'>
 			<div className='flex flex-row items-center justify-center gap-2'>
