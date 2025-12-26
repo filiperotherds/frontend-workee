@@ -38,7 +38,7 @@ export default function MobileNavbar() {
         {navItems.map((item) => (
           <Link key={item.href} href={item.href} className="flex-1">
             <div
-              className={`flex flex-col items-center justify-end gap-1 ${
+              className={`flex flex-col items-center justify-end ${
                 pathname === item.href
                   ? "text-primary"
                   : "text-muted-foreground"
