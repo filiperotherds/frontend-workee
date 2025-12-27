@@ -13,7 +13,7 @@ export const navItems = [
     href: "/organization/estimates",
   },
   {
-    title: "Projetos",
+    title: "Serviços",
     icon: Inbox,
     href: "/organization/projects",
   },

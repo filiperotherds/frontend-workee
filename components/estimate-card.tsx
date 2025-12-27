@@ -1,26 +1,34 @@
-import Link from "next/link";
-import { Button } from "./ui/button";
-import { ChevronRight } from "lucide-react";
+import { formatter } from "@/lib/number-formatter";
 
-const totalEstimate = 8273.24
+type EstimateCardProps = {
+  id: string;
+  customer: string;
+  price: number;
+  service: string;
+  date: Date;
+};
 
-export default function EstimateCard() {
+export default function EstimateCard({
+  id,
+  customer,
+  price,
+  service,
+  date,
+}: EstimateCardProps) {
+  const formatedPrice = formatter.format(price / 100);
+
   return (
-    <div className="w-full flex flex-col items-start justify-start space-y-2">
-      <h1 className="text-sm text-muted-foreground font-medium">
-        Total Orçado
-      </h1>
+    <div className="w-full flex flex-col items-start justify-start">
+      <span className="text-sm text-muted-foreground font-medium">
+        {id} • {customer}
+      </span>
 
-      <div className="w-full flex flex-row items-center justify-between">
-        <span className="text-5xl text-primary font-medium">
-          R${totalEstimate}
-        </span>
+      <h1 className="text-2xl text-primary font-bold">R${formatedPrice}</h1>
 
-        <Link href="/organization/">
-          <Button variant={"ghost"} size={"icon-sm"}>
-            <ChevronRight />
-          </Button>
-        </Link>
+      <div className="w-full mt-2 flex flex-row items-center justify-between">
+        <span className="text-sm text-muted-foreground">{service}</span>
+
+        <span className="text-sm text-muted-foreground">{date.toLocaleDateString('pt-BR')}</span>
       </div>
     </div>
   );

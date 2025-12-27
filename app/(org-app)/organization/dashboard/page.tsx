@@ -1,5 +1,5 @@
 import DashboardCards from "@/components/dashboard-cards";
-import EstimateCard from "@/components/estimate-card";
+import EstimateCard from "@/components/billing-card";
 
 export default async function Dashboard() {
   return (

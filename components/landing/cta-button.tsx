@@ -11,10 +11,10 @@ export default function CtaButton({ title }: CtaButtonProps) {
 	return (
 		<div className='w-full'>
 			<div className='relative group w-full md:w-2/3 h-16'>
-				<div className='absolute inset-0 bg-[#12662a] rounded-lg -translate-x-1 translate-y-1' />
+				<div className='absolute inset-0 bg-theme-secondary rounded-lg -translate-x-1 translate-y-1' />
 				<Link
 					href='/organization/sign-up'
-					className='block relative w-full h-full bg-[#5fed83] rounded-lg
+					className='block relative w-full h-full bg-theme-primary rounded-lg
                      transition-transform duration-200 ease-out
                      group-hover:-translate-y-1 group-hover:translate-x-1
                      active:translate-x-0 active:translate-y-0'>
