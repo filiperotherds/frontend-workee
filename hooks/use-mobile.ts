@@ -3,10 +3,9 @@
 import { useEffect, useState } from "react";
 
 export function useIsMobile(breakpoint = 768) {
-  const [isMobile, setIsMobile] = useState<boolean | undefined>(undefined);
+  const [isMobile, setIsMobile] = useState<boolean>(false);
 
   useEffect(() => {
-    // garante que só roda após mount
     const check = () => {
       setIsMobile(window.innerWidth < breakpoint);
     };
