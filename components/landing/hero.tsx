@@ -42,7 +42,7 @@ export default function Hero() {
 							</div>
 
 							<span className='text-xs font-medium text-muted-foreground'>
-								Escolhido por +600 trabalhadores
+								Escolhido por +600 profissionais
 							</span>
 						</div>
 
