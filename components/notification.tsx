@@ -5,7 +5,6 @@ import {
   DropdownMenuTrigger,
   DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuSeparator,
 } from "./ui/dropdown-menu";
 import EmptyNotifications from "./empty-notifications";
 
@@ -24,7 +23,7 @@ const notifications: NotificationItem[] | null = [
   },
 ];
 
-export default function Notification() {
+export function Notification() {
   const hasNotifications = notifications && notifications.length > 0;
 
   return (
@@ -32,7 +31,7 @@ export default function Notification() {
       <DropdownMenuTrigger className="relative cursor-pointer outline-none">
         {hasNotifications ? (
           <div className="absolute z-20 -top-1 -right-1">
-            <div className="size-4 rounded-full flex items-center justify-center bg-destructive">
+            <div className="relative h-4 min-w-4 px-1 rounded-full flex items-center justify-center bg-theme-secondary">
               <span className="text-[10px] font-medium text-white">
                 {notifications.length}
               </span>

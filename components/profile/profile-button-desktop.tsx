@@ -1,13 +1,11 @@
-import { auth } from "@/auth/auth";
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import { Avatar, AvatarImage, AvatarFallback } from "../ui/avatar";
 import {
   DropdownMenu,
+  DropdownMenuTrigger,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "./ui/dropdown-menu";
-import { ChevronDown, LogOut, Settings } from "lucide-react";
-import Link from "next/link";
+} from "../ui/dropdown-menu";
+import { ChevronDown, Link, Settings, LogOut } from "lucide-react";
 
 function getInitials(name: string): string {
   const initials = name
@@ -19,13 +17,11 @@ function getInitials(name: string): string {
   return initials;
 }
 
-export async function ProfileButton() {
-  const { user } = await auth();
-
+export function ProfileButtonDesktop({ user }: any) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="flex items-center gap-3 outline-none cursor-pointer">
-        <div className="hidden md:flex flex-col items-end">
+        <div className="flex flex-col items-end">
           <span className="text-sm font-medium">{user.name}</span>
           <span className="text-xs font-medium text-muted-foreground">
             {user.email}

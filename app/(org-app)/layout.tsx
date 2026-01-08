@@ -1,5 +1,5 @@
 import { auth, isAuthenticated } from "@/auth/auth";
-import Header from "@/components/header";
+import { Header } from "@/components/header";
 import AppSidebar from "@/components/sidebar";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import type { Metadata } from "next";

@@ -1,4 +1,5 @@
 import EstimateCard from "@/components/estimate-card";
+import { SolicitationsList } from "@/components/solicitation-list";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -60,7 +61,7 @@ export default function Estimates() {
             </DialogDescription>
           </DialogHeader>
 
-          <div className="w-full flex flex-col items-start justify-start space-y-2">
+          <div className="w-full flex flex-col items-start justify-start space-y-6">
             <Link href="/organization/estimates/create" className="w-full">
               <div className="w-full p-4 gap-2 flex flex-row items-start justify-start border border-border rounded-md">
                 <div className="size-4">
@@ -80,7 +81,10 @@ export default function Estimates() {
               </div>
             </Link>
 
-            <Link href="/organization/comercial-propose/create" className="w-full">
+            <Link
+              href="/organization/comercial-propose/create"
+              className="w-full"
+            >
               <div className="w-full p-4 gap-2 flex flex-row items-start justify-start border border-border rounded-md">
                 <div className="size-4">
                   <HandHelping size={16} className="text-muted-foreground" />
@@ -101,6 +105,8 @@ export default function Estimates() {
           </div>
         </DialogContent>
       </Dialog>
+
+      <SolicitationsList />
 
       <div className="w-full flex flex-col space-y-4">
         {estimateFakeList.map((item, index) => (

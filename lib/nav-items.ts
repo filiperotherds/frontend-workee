@@ -1,4 +1,4 @@
-import { Inbox, ReceiptText, Store } from "lucide-react";
+import { ReceiptText, Store, Users } from "lucide-react";
 import { BsFillBarChartFill } from "react-icons/bs";
 
 export const navItems = [
@@ -8,18 +8,18 @@ export const navItems = [
     href: "/organization/dashboard",
   },
   {
-    title: "Orçamento",
+    title: "Orçamentos",
     icon: ReceiptText,
     href: "/organization/estimates",
   },
   {
-    title: "Serviços",
-    icon: Inbox,
+    title: "Equipe",
+    icon: Users,
     href: "/organization/projects",
   },
   {
     title: "Empresa",
     icon: Store,
-    href: "/organization/settings",
+    href: "/organization",
   },
 ];
