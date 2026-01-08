@@ -1,41 +1,41 @@
 import LogoLoop from '../LogoLoop';
-import logo01 from '@/assets/logos/logoipsum-358.svg';
-import logo02 from '@/assets/logos/logoipsum-372.svg';
-import logo03 from '@/assets/logos/logoipsum-393.svg';
+import logo01 from '@/assets/logos/fho.png';
+import logo02 from '@/assets/logos/chaveiro-panorama.png';
+import logo03 from '@/assets/logos/asaas.svg';
 import logo04 from '@/assets/logos/logoipsum-404.svg';
 import logo05 from '@/assets/logos/logoipsum-410.svg';
 
 const techLogos = [
 	{
 		src: logo01.src,
-		alt: 'Jobble',
-		title: 'Jobble',
-		href: 'https://jobble.com.br',
+		alt: 'FHO | Fundação Hermínio Ometto',
+		title: 'FHO',
+		href: 'https://www.fho.edu.br/',
 	},
 	{
 		src: logo02.src,
-		alt: 'Jobble',
-		title: 'Jobble',
-		href: 'https://jobble.com.br',
+		alt: 'Chaveiro Panorama',
+		title: 'Chaveiro Panorama',
+		href: 'https://www.chaveiropanorama.com.br/',
 	},
 	{
 		src: logo03.src,
-		alt: 'Jobble',
-		title: 'Jobble',
-		href: 'https://jobble.com.br',
+		alt: 'Asaas',
+		title: 'Asaas',
+		href: 'https://www.asaas.com/',
 	},
-	{
-		src: logo04.src,
-		alt: 'Jobble',
-		title: 'Jobble',
-		href: 'https://jobble.com.br',
-	},
-	{
-		src: logo05.src,
-		alt: 'Jobble',
-		title: 'Jobble',
-		href: 'https://jobble.com.br',
-	},
+	// {
+	// 	src: logo04.src,
+	// 	alt: 'Jobble',
+	// 	title: 'Jobble',
+	// 	href: 'https://jobble.com.br',
+	// },
+	// {
+	// 	src: logo05.src,
+	// 	alt: 'Jobble',
+	// 	title: 'Jobble',
+	// 	href: 'https://jobble.com.br',
+	// },
 ];
 
 export default function Sponsors() {
@@ -58,8 +58,8 @@ export default function Sponsors() {
 						logos={techLogos}
 						speed={60}
 						direction='right'
-						logoHeight={48}
-						gap={80}
+						logoHeight={56}
+						gap={120}
 						hoverSpeed={0}
 						scaleOnHover
 						fadeOut

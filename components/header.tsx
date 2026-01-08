@@ -1,5 +1,5 @@
 import { Notification } from "./notification";
-import HeaderTitle from "./header-title";
+import { HeaderTitle } from "./header-title";
 import { ProfileButtonServer } from "./profile/profile-button-server";
 
 export function Header() {

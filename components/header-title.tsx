@@ -3,7 +3,7 @@
 import { usePathname } from "next/navigation";
 import { navItems } from "@/lib/nav-items";
 
-export default function HeaderTitle() {
+export function HeaderTitle() {
   const pathname = usePathname();
 
   return (

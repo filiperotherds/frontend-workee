@@ -1,4 +1,4 @@
-import jobbleLogo from '@/assets/jobble-wordmark.svg';
+import jobbleLogo from '@/assets/jobble-professionals.png';
 import Image from 'next/image';
 import { NavMenu } from '../nav-menu';
 import Link from 'next/link';
@@ -13,7 +13,7 @@ export default function LandingHeader() {
 			<div className='w-full max-w-[1232px] h-16 flex flex-row items-center justify-between px-8 bg-white rounded-b-lg'>
 				<div className='flex flex-row items-center'>
 					<Link href='/'>
-						<Image src={jobbleLogo} alt='Jobble' className='w-20' />
+						<Image src={jobbleLogo} alt='Jobble' className='w-24' />
 					</Link>
 				</div>
 
