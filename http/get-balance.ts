@@ -1,6 +1,6 @@
 import { api } from "./api-client";
 
-interface GetOrganizationResponse {
+interface GetProfileResponse {
   id: string;
   name: string | null;
   email: string;
@@ -11,8 +11,8 @@ interface GetOrganizationResponse {
   };
 }
 
-export async function getOrganization() {
-  const result = await api.get("organizations").json<GetOrganizationResponse>();
+export async function getBalance() {
+  const result = await api.get("users/profile").json<GetProfileResponse>();
 
   return result;
 }
