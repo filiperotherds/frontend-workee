@@ -19,7 +19,7 @@ export function PlanCard() {
 					<h1 className='text-xl font-bold text-primary'>Profissional</h1>
 				</div>
 
-				<div className='flex flex-row items-center justify-center gap-1 text-muted-foreground'>
+				<div className='flex flex-row items-center justify-center gap-2 text-muted-foreground'>
 					<Calendar size={16} />
 
 					<span className='text-sm font-medium'>Renova em 01/02/2026</span>

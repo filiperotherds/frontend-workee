@@ -1,4 +1,5 @@
-import { Inbox, ReceiptText, Store } from "lucide-react";
+import Settings from "@/app/(org-app)/organization/settings/page";
+import { Inbox, ReceiptText, SettingsIcon, Store } from "lucide-react";
 import { BsFillBarChartFill } from "react-icons/bs";
 
 export const navItems = [
@@ -18,8 +19,8 @@ export const navItems = [
     href: "/organization/projects",
   },
   {
-    title: "Empresa",
-    icon: Store,
-    href: "/organization",
+    title: "Configurações",
+    icon: SettingsIcon,
+    href: "/organization/settings",
   },
 ];

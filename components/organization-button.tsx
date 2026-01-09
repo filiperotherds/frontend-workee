@@ -39,7 +39,7 @@ export default function OrganizationButton() {
 					</div>
 
 					<div className='flex flex-col items-start'>
-						<span className='text-sm font-medium'>{organization.name}</span>
+						<span className='text-sm font-semibold'>{organization.name}</span>
 						<span className='text-xs font-medium text-muted-foreground'>
 							{organization.role}
 						</span>
