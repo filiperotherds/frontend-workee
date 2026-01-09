@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 
 import { navItems } from "@/lib/nav-items";
+import { DollarSign } from "lucide-react";
 
 export default function MobileNavbar() {
   const pathname = usePathname();
@@ -26,6 +27,13 @@ export default function MobileNavbar() {
           </Link>
         ))}
       </div>
+
+      <Link
+        href={"/organization/payments"}
+        className="absolute -top-6 left-1/2 transform -translate-x-1/2 w-12 h-12 rounded-full bg-theme-primary flex items-center justify-center text-white"
+      >
+        <DollarSign />
+      </Link>
     </div>
   );
 }

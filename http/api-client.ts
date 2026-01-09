@@ -2,8 +2,8 @@ import ky from "ky";
 import { getCookie } from "cookies-next";
 
 export const api = ky.create({
-  prefixUrl: "https://backend-jobble-production.up.railway.app",
-  // prefixUrl: "http://localhost:3333",
+  // prefixUrl: "https://backend-jobble-production.up.railway.app",
+  prefixUrl: "http://localhost:3333",
   hooks: {
     beforeRequest: [
       async (request) => {

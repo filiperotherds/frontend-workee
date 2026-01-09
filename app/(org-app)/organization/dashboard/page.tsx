@@ -1,6 +1,5 @@
 import { BalanceCard } from "@/components/balance-card";
 import { BillingCard } from "@/components/billing-card";
-import { PendingCard } from "@/components/pending-card";
 import { Separator } from "@/components/ui/separator";
 
 export default async function Dashboard() {
@@ -12,8 +11,6 @@ export default async function Dashboard() {
         <Separator />
 
         <BalanceCard />
-
-        <PendingCard />
       </div>
     </div>
   );
