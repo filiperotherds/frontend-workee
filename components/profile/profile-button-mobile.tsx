@@ -13,9 +13,11 @@ function getInitials(name: string): string {
 }
 
 type User = {
-	name: string;
-	email: string;
-	avatarUrl?: string;
+	user: {
+		name: string;
+		email: string;
+		avatarUrl?: string;
+	};
 };
 
 export function ProfileButtonMobile({ user }: User) {
