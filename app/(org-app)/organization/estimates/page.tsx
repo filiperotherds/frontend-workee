@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Separator } from "@/components/ui/separator";
-import { HandHelping, History, ReceiptText } from "lucide-react";
+import { HandHelping, ReceiptText, ScrollText } from "lucide-react";
 import Link from "next/link";
 
 const estimateFakeList = [
@@ -42,13 +42,17 @@ export default function Estimates() {
         </div>
 
         <Button variant={"ghost"} size={"icon"}>
-          <History className="text-muted-foreground" />
+          <ScrollText className="text-muted-foreground" />
         </Button>
       </div>
 
       <Dialog>
         <DialogTrigger asChild>
-          <Button className="w-full" variant={"default"} size={"lg"}>
+          <Button
+            className="w-full bg-zinc-700"
+            variant={"default"}
+            size={"lg"}
+          >
             <ReceiptText />
             Novo Orçamento
           </Button>
@@ -106,25 +110,9 @@ export default function Estimates() {
         </DialogContent>
       </Dialog>
 
-      <SolicitationList />
+      <SolicitationList isCompact />
 
-      <div className="w-full flex flex-col space-y-4">
-        {estimateFakeList.map((item, index) => (
-          <div key={index}>
-            <EstimateCard
-              id={item.id}
-              customer={item.customer}
-              price={item.price}
-              service={item.service}
-              date={item.date}
-            />
-
-            {index < estimateFakeList.length - 1 && (
-              <Separator className="mt-4" />
-            )}
-          </div>
-        ))}
-      </div>
+      
     </div>
   );
 }

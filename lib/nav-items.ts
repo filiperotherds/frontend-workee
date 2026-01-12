@@ -1,11 +1,9 @@
-import Settings from "@/app/(org-app)/organization/settings/page";
-import { Inbox, ReceiptText, SettingsIcon, Store } from "lucide-react";
-import { BsFillBarChartFill } from "react-icons/bs";
+import { House, Inbox, ReceiptText, SettingsIcon } from "lucide-react";
 
 export const navItems = [
   {
-    title: "Dashboard",
-    icon: BsFillBarChartFill,
+    title: "Início",
+    icon: House,
     href: "/organization/dashboard",
   },
   {
@@ -19,7 +17,7 @@ export const navItems = [
     href: "/organization/projects",
   },
   {
-    title: "Configurações",
+    title: "Opções",
     icon: SettingsIcon,
     href: "/organization/settings",
   },

@@ -30,7 +30,7 @@ export default function MobileNavbar() {
 
       <Link
         href={"/organization/payments"}
-        className="absolute -top-6 left-1/2 transform -translate-x-1/2 w-12 h-12 rounded-full bg-theme-primary flex items-center justify-center text-white"
+        className="absolute -top-8 left-1/2 transform -translate-x-1/2 size-16 rounded-full bg-theme-primary flex items-center justify-center text-white"
       >
         <DollarSign />
       </Link>
