@@ -1,13 +1,13 @@
-import { Clock, MapPin, User } from "lucide-react";
+import { AlertTriangle, Clock, Eye, MapPin, User } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 
-export function SolicitationsList() {
+export function SolicitationList() {
   const solicitations = [
     {
       id: 1,
-      service: "House Cleaning",
+      service: "Abertura Veicular",
       client: "Maria Silva",
       location: "Jardim Paulista, 2.3 km",
       time: "Today, 14:00",
@@ -16,7 +16,7 @@ export function SolicitationsList() {
     },
     {
       id: 2,
-      service: "Plumbing Repair",
+      service: "Cópia de Chave Veicular",
       client: "João Santos",
       location: "Vila Mariana, 3.8 km",
       time: "Today, 16:30",
@@ -25,7 +25,7 @@ export function SolicitationsList() {
     },
     {
       id: 3,
-      service: "Electrical Installation",
+      service: "Troca de Fechadura Residencial",
       client: "Ana Costa",
       location: "Pinheiros, 1.5 km",
       time: "Tomorrow, 09:00",
@@ -35,21 +35,31 @@ export function SolicitationsList() {
   ];
 
   return (
-    <section className="w-full space-y-3">
+    <section className="w-full space-y-4">
       <div className="flex items-center justify-between">
-        <h2 className="text-base font-semibold text-foreground">
-          New Solicitations
-        </h2>
+        <div className="flex flex-col items-start justify-start space-y-0.5">
+          <h1 className="text-2xl text-primary font-bold">Solicitações</h1>
+          <span className="text-xs text-muted-foreground">
+            Solicitações de orçamentos pendentes.
+          </span>
+        </div>
 
-        <span className="text-xs font-medium text-green-600">
-          {solicitations.length} novas
-        </span>
+        <div className="relative">
+          <div className="absolute inset-0 bg-theme-secondary rounded-md -translate-x-1 translate-y-1" />
+
+          <div className="relative flex items-center justify-center py-0.5 px-2 bg-theme-primary rounded-md">
+            <span className="text-xs font-medium text-white">
+              {solicitations.length} novas
+            </span>
+          </div>
+        </div>
       </div>
+
       <div className="space-y-3">
         {solicitations.map((solicitation) => (
           <Card
             key={solicitation.id}
-            className="border-border bg-card p-4 transition-all hover:border-primary/50"
+            className="rounded-xl border-border bg-card p-4"
           >
             <div className="space-y-3">
               <div className="w-full flex items-start justify-between">
@@ -60,11 +70,12 @@ export function SolicitationsList() {
                     </h3>
                     {solicitation.urgent && (
                       <Badge
-                        variant={
-                          solicitation.urgent ? "destructive" : "secondary"
+                        className={
+                          solicitation.urgent ? "bg-amber-300" : "secondary"
                         }
                       >
-                        Urgent
+                        <AlertTriangle />
+                        Urgente
                       </Badge>
                     )}
                   </div>
@@ -87,14 +98,8 @@ export function SolicitationsList() {
               </div>
 
               <div className="flex gap-2 pt-1">
-                <Button className="flex-1 bg-primary text-primary-foreground hover:bg-primary/90">
-                  Accept
-                </Button>
-                <Button
-                  variant="outline"
-                  className="flex-1 border-border text-foreground hover:bg-muted bg-transparent"
-                >
-                  Decline
+                <Button className="flex-1 bg-zinc-700 text-primary-foreground">
+                  Responder
                 </Button>
               </div>
             </div>

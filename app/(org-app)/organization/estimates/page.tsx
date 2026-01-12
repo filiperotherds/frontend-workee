@@ -1,5 +1,5 @@
 import EstimateCard from "@/components/estimate-card";
-import { SolicitationsList } from "@/components/solicitation-list";
+import { SolicitationList } from "@/components/solicitation-list";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -106,7 +106,7 @@ export default function Estimates() {
         </DialogContent>
       </Dialog>
 
-      <SolicitationsList />
+      <SolicitationList />
 
       <div className="w-full flex flex-col space-y-4">
         {estimateFakeList.map((item, index) => (
