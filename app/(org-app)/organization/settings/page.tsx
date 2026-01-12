@@ -1,4 +1,4 @@
-import OrganizationButton from '@/components/organization-button';
+import { OrganizationButton } from '@/components/organization-button';
 import { PlanCard } from '@/components/plan-card';
 import { ProfileButtonServer } from '@/components/profile/profile-button-server';
 import { Button } from '@/components/ui/button';

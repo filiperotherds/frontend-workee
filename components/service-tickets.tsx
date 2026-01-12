@@ -72,7 +72,7 @@ export function ServiceTickets() {
                   <h2 className="text-xl font-bold tracking-tight mb-1 text-foreground">
                     {item.serviceTitle}
                   </h2>
-                  <p className="text-sm text-muted-foreground uppercase tracking-wider">
+                  <p className="text-xs text-muted-foreground uppercase tracking-wider">
                     jobble profissionais
                   </p>
                 </div>
@@ -124,7 +124,7 @@ export function ServiceTickets() {
 
                 <div className="text-center pb-2">
                   <div className="text-xs text-muted-foreground uppercase tracking-wider mb-1">
-                    Número do Ticket
+                    Número do Orçamento
                   </div>
                   <div className="font-mono text-sm font-medium text-foreground">
                     {item.estimateNumber}

@@ -10,7 +10,7 @@ import {
   User,
   Wallet,
 } from "lucide-react";
-import OrganizationButton from "./organization-button";
+import { OrganizationButton } from "./organization-button";
 import { Separator } from "./ui/separator";
 import {
   Sidebar,

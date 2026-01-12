@@ -1,14 +1,12 @@
 import { api } from "./api-client";
 
 interface GetOrganizationResponse {
-  id: string;
-  name: string | null;
-  email: string;
-  avatarUrl: string | null;
-  accountType: "INDIVIDUAL" | "ORGANIZATION";
-  userProfile: {
-    id: string;
-  };
+    organization: {
+        type: "INDIVIDUAL" | "ORGANIZATION";
+        name: string | null;
+        avatarUrl: string | null;
+    } | null;
+    role: string;
 }
 
 export async function getOrganization() {

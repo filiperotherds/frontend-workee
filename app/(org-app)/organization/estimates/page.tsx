@@ -1,4 +1,4 @@
-import EstimateCard from "@/components/estimate-card";
+import { EstimateCard } from "@/components/estimate-card";
 import { SolicitationList } from "@/components/solicitation-list";
 import { Button } from "@/components/ui/button";
 import {
@@ -9,26 +9,8 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Separator } from "@/components/ui/separator";
 import { HandHelping, ReceiptText, ScrollText } from "lucide-react";
 import Link from "next/link";
-
-const estimateFakeList = [
-  {
-    id: "#0001",
-    customer: "Gabriel Souza",
-    price: 12000,
-    service: "Abertura Residencial",
-    date: new Date(),
-  },
-  {
-    id: "#0002",
-    customer: "Rafael Pereira Reis",
-    price: 24000,
-    service: "Troca de Fechadura",
-    date: new Date(),
-  },
-];
 
 export default function Estimates() {
   return (
@@ -112,7 +94,7 @@ export default function Estimates() {
 
       <SolicitationList isCompact />
 
-      
+      <EstimateCard />
     </div>
   );
 }
