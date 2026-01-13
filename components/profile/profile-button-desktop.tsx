@@ -1,3 +1,4 @@
+import { auth } from "@/auth/auth";
 import { Avatar, AvatarImage, AvatarFallback } from "../ui/avatar";
 import {
   DropdownMenu,
@@ -17,7 +18,9 @@ function getInitials(name: string): string {
   return initials;
 }
 
-export function ProfileButtonDesktop({ user }: any) {
+export async function ProfileButtonDesktop() {
+  const { user } = await auth();
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="flex items-center gap-3 outline-none cursor-pointer">

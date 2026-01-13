@@ -17,7 +17,8 @@ export async function auth() {
     const user = await getProfile();
 
     return { user };
-  } catch (err) {}
+  } catch {
+  }
 
   redirect("/api/auth/sign-out");
 }

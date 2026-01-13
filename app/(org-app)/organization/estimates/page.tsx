@@ -28,69 +28,12 @@ export default function Estimates() {
         </Button>
       </div>
 
-      <Dialog>
-        <DialogTrigger asChild>
-          <Button
-            className="w-full bg-zinc-700"
-            variant={"default"}
-            size={"lg"}
-          >
-            <ReceiptText />
-            Novo Orçamento
-          </Button>
-        </DialogTrigger>
-        <DialogContent className="rounded-2xl">
-          <DialogHeader className="w-full flex flex-col items-start justify-start">
-            <DialogTitle>Tipo de Orçamento</DialogTitle>
-            <DialogDescription>
-              Escolha o tipo de orçamento a ser gerado
-            </DialogDescription>
-          </DialogHeader>
-
-          <div className="w-full flex flex-col items-start justify-start space-y-6">
-            <Link href="/organization/estimates/create" className="w-full">
-              <div className="w-full p-4 gap-2 flex flex-row items-start justify-start border border-border rounded-md">
-                <div className="size-4">
-                  <ReceiptText size={16} className="text-muted-foreground" />
-                </div>
-
-                <div className="flex flex-col items-start justify-start space-y-1">
-                  <h1 className="text-base leading-4 font-semibold">
-                    Orçamento Simples
-                  </h1>
-
-                  <span className="text-xs text-muted-foreground">
-                    Crie orçamentos simplificados rápidos e diretos para seus
-                    clientes
-                  </span>
-                </div>
-              </div>
-            </Link>
-
-            <Link
-              href="/organization/comercial-propose/create"
-              className="w-full"
-            >
-              <div className="w-full p-4 gap-2 flex flex-row items-start justify-start border border-border rounded-md">
-                <div className="size-4">
-                  <HandHelping size={16} className="text-muted-foreground" />
-                </div>
-
-                <div className="flex flex-col items-start justify-start space-y-1">
-                  <h1 className="text-base leading-4 font-semibold">
-                    Proposta Comercial
-                  </h1>
-
-                  <span className="text-xs text-muted-foreground">
-                    Crie propostas comerciais detalhadas e personalizadas
-                    específicas para seus clientes.
-                  </span>
-                </div>
-              </div>
-            </Link>
-          </div>
-        </DialogContent>
-      </Dialog>
+      <Link href={'/organization/estimates/create'} className="w-full">
+        <Button className="w-full bg-zinc-700" variant={"default"} size={"lg"}>
+          <ReceiptText />
+          Novo Orçamento
+        </Button>
+      </Link>
 
       <SolicitationList isCompact />
 

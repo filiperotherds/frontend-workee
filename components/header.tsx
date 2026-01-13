@@ -1,6 +1,6 @@
 import { Notification } from "./notification";
 import { HeaderTitle } from "./header-title";
-import { ProfileButtonServer } from "./profile/profile-button-server";
+import { ProfileButtonDesktop } from "./profile/profile-button-desktop";
 
 export function Header() {
   return (
@@ -10,7 +10,7 @@ export function Header() {
       <div className="flex items-center">
         <Notification />
         <div className="hidden md:flex md:ml-8">
-          <ProfileButtonServer />
+          <ProfileButtonDesktop />
         </div>
       </div>
     </div>

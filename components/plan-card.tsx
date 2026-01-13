@@ -8,7 +8,7 @@ import { Calendar } from "lucide-react";
 export function PlanCard() {
   return (
     <div className="w-full flex flex-row items-center justify-start gap-6 p-4 rounded-xl border-b border-l border-border shadow-xs">
-      <Image src={briefcaseIcon} alt="Plan" className="size-24 -m-2" />
+      <Image src={diamondIcon} alt="Plan" className="size-24 -m-2" />
 
       <div className="flex flex-col items-start justify-between space-y-2">
         <div className="flex flex-col items-start justify-start">

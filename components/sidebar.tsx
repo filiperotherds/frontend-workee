@@ -10,7 +10,6 @@ import {
   User,
   Wallet,
 } from "lucide-react";
-import { OrganizationButton } from "./organization-button";
 import { Separator } from "./ui/separator";
 import {
   Sidebar,
@@ -25,8 +24,6 @@ import {
 } from "./ui/sidebar";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import jobbleWordmark from "@/public/jobble-wordmark.svg";
-import Image from "next/image";
 
 const navGroups = [
   {
@@ -129,7 +126,7 @@ export default function AppSidebar() {
 
       <SidebarFooter>
         <div className="p-2 w-full flex flex-col items-start justify-start space-y-4">
-          <OrganizationButton />
+          {/* <OrganizationButton /> */}
 
           <p className="text-xs text-muted-foreground">Jobble Inc. © 2025</p>
         </div>
