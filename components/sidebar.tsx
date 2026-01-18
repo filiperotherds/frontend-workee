@@ -18,6 +18,7 @@ import {
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
+  SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
@@ -25,28 +26,30 @@ import {
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 
+import logo from "@/assets/jobble-professionals.png";
+
 const navGroups = [
   {
-    label: "Prestador",
+    label: "Operacional",
     items: [
       {
-        title: "Painel",
-        url: "/organization/dashboard",
+        title: "Início",
+        url: "/dashboard",
         icon: LayoutDashboard,
       },
       {
         title: "Orçamentos",
-        url: "/organization/estimates",
+        url: "/estimates",
         icon: ReceiptText,
       },
       {
-        title: "Meus Serviços",
-        url: "/organization/services",
+        title: "Serviços",
+        url: "/services",
         icon: Layers,
       },
       {
         title: "Clientes",
-        url: "/organization/customers",
+        url: "/customers",
         icon: User,
       },
     ],
@@ -128,7 +131,9 @@ export default function AppSidebar() {
         <div className="p-2 w-full flex flex-col items-start justify-start space-y-4">
           {/* <OrganizationButton /> */}
 
-          <p className="text-xs text-muted-foreground">Jobble Inc. © 2025</p>
+          <p className="text-xs text-muted-foreground">
+            Jobble Profissionais © 2026
+          </p>
         </div>
       </SidebarFooter>
     </Sidebar>

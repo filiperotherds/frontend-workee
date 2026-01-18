@@ -31,7 +31,7 @@ export function LoginForm({
       if (accountType === "INDIVIDUAL") {
         router.push("/home");
       } else {
-        router.push("/organization/dashboard");
+        router.push("/dashboard");
       }
     }
   );

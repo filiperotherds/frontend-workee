@@ -4,21 +4,21 @@ export const navItems = [
   {
     title: "Início",
     icon: House,
-    href: "/organization/dashboard",
+    href: "/dashboard",
   },
   {
     title: "Orçamentos",
     icon: ReceiptText,
-    href: "/organization/estimates",
+    href: "/estimates",
   },
   {
     title: "Serviços",
     icon: Inbox,
-    href: "/organization/projects",
+    href: "/projects",
   },
   {
     title: "Opções",
     icon: SettingsIcon,
-    href: "/organization/settings",
+    href: "/settings",
   },
 ];
