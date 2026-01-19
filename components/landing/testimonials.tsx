@@ -19,7 +19,7 @@ export default function Testimonials() {
 
 						<h1 className='text-primary text-6xl font-extrabold text-center max-w-[800px]'>
 							Histórias reais de quem usa a{' '}
-							<Highlighter action='highlight' color='#5fed83'>
+							<Highlighter action='highlight' color='#93c5fd'>
 								Jobble
 							</Highlighter>{' '}
 							no dia a dia.

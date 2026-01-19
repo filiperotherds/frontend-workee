@@ -1,4 +1,4 @@
-import jobbleLogo from '@/assets/jobble-professionals.png';
+import jobbleLogo from '@/assets/jobble-logo.png';
 import Image from 'next/image';
 import { NavMenu } from '../nav-menu';
 import Link from 'next/link';
@@ -36,7 +36,7 @@ export default function LandingHeader() {
 						<Button
 							variant={'default'}
 							size={'sm'}
-							className='bg-theme-primary text-primary hover:bg-theme-primary/80'>
+							className='bg-theme-primary text-white hover:bg-theme-primary/80'>
 							Cadastre-se
 						</Button>
 					</Link>

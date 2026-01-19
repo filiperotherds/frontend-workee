@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import jobbleLogo from '@/assets/jobble-professionals.png';
+import jobbleLogo from '@/assets/jobble-logo.png';
 import { Separator } from '../ui/separator';
 import { Instagram, Linkedin } from 'lucide-react';
 

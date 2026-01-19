@@ -5,12 +5,13 @@ interface GetOrganizationResponse {
         type: "INDIVIDUAL" | "ORGANIZATION";
         name: string | null;
         avatarUrl: string | null;
+        cnpj: string | null;
     } | null;
     role: string;
 }
 
 export async function getOrganization() {
-  const result = await api.get("organizations").json<GetOrganizationResponse>();
+    const result = await api.get("organizations").json<GetOrganizationResponse>();
 
-  return result;
+    return result;
 }

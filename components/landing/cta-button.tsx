@@ -21,7 +21,7 @@ export default function CtaButton({ title }: CtaButtonProps) {
         >
           {/* Conteúdo do Botão */}
           <div className="w-full h-full flex flex-row items-end justify-start px-3 py-2">
-            <div className="flex flex-row items-center justify-center space-x-2 text-zinc-700">
+            <div className="flex flex-row items-center justify-center space-x-2 text-white">
               <span className="font-mono font-medium tracking-wide">
                 {title}
               </span>

@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import { EstimateCard } from "@/components/estimate-card";
 import { EstimateComponent } from "@/components/estimate-component";
@@ -16,14 +16,26 @@ import {
 import { useIsMobile } from "@/hooks/use-mobile";
 import {
   Archive,
+  FileCog,
   MoreHorizontalIcon,
   Plus,
+  Printer,
   ReceiptText,
   ScrollText,
+  Share,
 } from "lucide-react";
 import Link from "next/link";
+import { useRef } from "react";
+import { useReactToPrint } from "react-to-print";
 
 export default function Estimates() {
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  const handlePrint = useReactToPrint({
+    contentRef,
+    documentTitle: "orcamento_0000226",
+  });
+
   const isMobile = useIsMobile();
 
   if (isMobile) {
@@ -72,31 +84,64 @@ export default function Estimates() {
 
         <div className="flex flex-row items-center justify-center space-x-4">
           <ButtonGroup>
-            <Button variant={"outline"}>
-              <Plus strokeWidth={3} />
-              Novo Orçamento
-            </Button>
+            <ButtonGroup>
+              <Button variant={"outline"} size={"default"}>
+                <FileCog />
+                Editar
+              </Button>
 
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="outline" size="icon" aria-label="More Options">
-                  <MoreHorizontalIcon />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                <DropdownMenuGroup>
-                  <Link href="/archived-estimate">
-                    <DropdownMenuItem
-                      variant="default"
-                      className="hover:cursor-pointer"
-                    >
-                      <Archive />
-                      Arquivados
-                    </DropdownMenuItem>
-                  </Link>
-                </DropdownMenuGroup>
-              </DropdownMenuContent>
-            </DropdownMenu>
+              <Button variant={"outline"} size={"default"}>
+                <Share />
+                Compartilhar
+              </Button>
+
+              <Button
+                variant={"outline"}
+                size={"default"}
+                onClick={() => handlePrint()}
+              >
+                <Printer />
+                Imprimir
+              </Button>
+
+              <Button
+                variant={"outline"}
+                size={"default"}
+                className="text-destructive hover:text-destructive/70"
+                onClick={() => { }}
+              >
+                <Archive />
+                Arquivar
+              </Button>
+            </ButtonGroup>
+
+            <ButtonGroup>
+              <Button variant={"outline"}>
+                <Plus strokeWidth={3} />
+                Novo Orçamento
+              </Button>
+
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="outline" size="icon" aria-label="More Options">
+                    <MoreHorizontalIcon />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
+                  <DropdownMenuGroup>
+                    <Link href="/archived-estimate">
+                      <DropdownMenuItem
+                        variant="default"
+                        className="hover:cursor-pointer"
+                      >
+                        <Archive />
+                        Arquivados
+                      </DropdownMenuItem>
+                    </Link>
+                  </DropdownMenuGroup>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </ButtonGroup>
           </ButtonGroup>
         </div>
       </div>
@@ -104,7 +149,7 @@ export default function Estimates() {
       <div className="w-full h-full flex flex-row items-start justify-start border border-border">
         <EstimatesList />
 
-        <EstimateComponent />
+        <EstimateComponent ref={contentRef} />
       </div>
     </div>
   );

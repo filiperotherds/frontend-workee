@@ -48,7 +48,7 @@ export default function Hero() {
 
 						<h1 className='text-primary text-6xl font-extrabold text-start max-w-[600px]'>
 							Ferramentas e{' '}
-							<Highlighter action='highlight' multiline color='#5fed83'>
+							<Highlighter action='highlight' multiline color='#93c5fd'>
 								clientes
 							</Highlighter>{' '}
 							para{' '}
