@@ -5,9 +5,22 @@ import { EstimateComponent } from "@/components/estimate-component";
 import { EstimatesList } from "@/components/estimates-list";
 import { SolicitationList } from "@/components/solicitation-list";
 import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
+import { ButtonGroup } from "@/components/ui/button-group";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { Archive, ReceiptText, ScrollText } from "lucide-react";
+import {
+  Archive,
+  MoreHorizontalIcon,
+  Plus,
+  ReceiptText,
+  ScrollText,
+} from "lucide-react";
 import Link from "next/link";
 
 export default function Estimates() {
@@ -58,27 +71,37 @@ export default function Estimates() {
         </div>
 
         <div className="flex flex-row items-center justify-center space-x-4">
-          <Link href="/new-estimate">
-            <Button variant={"outline"} size={"sm"}>
-              <Archive />
-              Arquivados
-            </Button>
-          </Link>
-
-          <Link href="/new-estimate">
-            <Button
-              variant={"default"}
-              size={"sm"}
-              className="bg-zinc-700 hover:bg-zinc-600"
-            >
-              <ReceiptText />
+          <ButtonGroup>
+            <Button variant={"outline"}>
+              <Plus strokeWidth={3} />
               Novo Orçamento
             </Button>
-          </Link>
+
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="outline" size="icon" aria-label="More Options">
+                  <MoreHorizontalIcon />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuGroup>
+                  <Link href="/archived-estimate">
+                    <DropdownMenuItem
+                      variant="default"
+                      className="hover:cursor-pointer"
+                    >
+                      <Archive />
+                      Arquivados
+                    </DropdownMenuItem>
+                  </Link>
+                </DropdownMenuGroup>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </ButtonGroup>
         </div>
       </div>
 
-      <div className="w-full h-full flex flex-row items-start justify-start border-t border-border">
+      <div className="w-full h-full flex flex-row items-start justify-start border border-border">
         <EstimatesList />
 
         <EstimateComponent />

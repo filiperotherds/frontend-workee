@@ -1,9 +1,17 @@
-import { Archive, FileCog, Printer, Share, Upload } from "lucide-react";
+import {
+  Archive,
+  FileCog,
+  FileText,
+  Printer,
+  Share,
+  Upload,
+} from "lucide-react";
 import Image from "next/image";
 import jobbleLogo from "@/assets/jobble-logo.png";
 import { Button } from "./ui/button";
 import { useRef } from "react";
 import { useReactToPrint } from "react-to-print";
+import { ButtonGroup, ButtonGroupText } from "./ui/button-group";
 
 interface EstimateItem {
   qty: number;
@@ -53,46 +61,41 @@ export function EstimateComponent() {
   return (
     <div className="w-full flex flex-col items-start justify-start">
       <div className="bg-secondary w-full flex items-center justify-center">
-        <div className="w-[800px] flex flex-row pt-8 items-center justify-between">
-          <div className="flex flex-row items-center justify-center space-x-4">
-            <Button
-              variant={"default"}
-              size={"sm"}
-              className="bg-zinc-700 hover:bg-zinc-600"
-            >
-              <FileCog />
-              Editar
-            </Button>
+        <div className="w-[800px] flex flex-row pt-8 items-center justify-start">
+          <ButtonGroup>
+            <ButtonGroup>
+              <Button variant={"outline"} size={"default"}>
+                <FileCog />
+                Editar
+              </Button>
 
-            <Button
-              variant={"default"}
-              size={"sm"}
-              className="bg-zinc-700 hover:bg-zinc-600"
-            >
-              <Share />
-              Compartilhar
-            </Button>
+              <Button variant={"outline"} size={"default"}>
+                <Share />
+                Compartilhar
+              </Button>
 
-            <Button
-              variant={"default"}
-              size={"sm"}
-              className="bg-zinc-700 hover:bg-zinc-600"
-              onClick={() => handlePrint()}
-            >
-              <Printer />
-              Imprimir
-            </Button>
-          </div>
+              <Button
+                variant={"outline"}
+                size={"default"}
+                onClick={() => handlePrint()}
+              >
+                <Printer />
+                Imprimir
+              </Button>
+            </ButtonGroup>
 
-          <Button
-            variant={"default"}
-            size={"sm"}
-            className="bg-zinc-700 hover:bg-zinc-600"
-            onClick={() => {}}
-          >
-            <Archive />
-            Arquivar
-          </Button>
+            <ButtonGroup>
+              <Button
+                variant={"outline"}
+                size={"default"}
+                className="text-destructive hover:text-destructive/70"
+                onClick={() => {}}
+              >
+                <Archive />
+                Arquivar
+              </Button>
+            </ButtonGroup>
+          </ButtonGroup>
         </div>
       </div>
 
@@ -113,7 +116,7 @@ export function EstimateComponent() {
                 chaveiropanorama@hotmail.com
               </p>
             </div>
-            <div className="border-2 border-dashed border-rose-200 rounded-lg p-6 flex flex-col items-center text-rose-400 print:hidden">
+            <div className="border-2 border-dashed border-border rounded-lg p-6 flex flex-col items-center text-muted-foreground print:hidden">
               <Upload />
               <span className="text-sm font-semibold">Upload Logo</span>
             </div>
@@ -188,40 +191,42 @@ export function EstimateComponent() {
           {/* Totais */}
           <div className="flex justify-end mb-20">
             <div className="w-64 space-y-3">
-              <div className="flex justify-between text-gray-700">
+              <div className="flex justify-between text-muted-foreground">
                 <span className="font-bold">Subtotal</span>
                 <span>R${subtotal.toFixed(2)}</span>
               </div>
-              <div className="flex justify-between text-gray-700">
+              <div className="flex justify-between text-muted-foreground">
                 <span className="font-bold">Taxas</span>
                 <span>R${tax.toFixed(2)}</span>
               </div>
-              <div className="flex justify-between border-t-2 border-muted-foreground pt-3 text-muted-foreground font-bold text-xl">
+              <div className="flex justify-between border-t border-border pt-3 text-zinc-700 font-bold text-xl">
                 <span>Total (BRL)</span>
                 <span>R${total.toFixed(2)}</span>
               </div>
             </div>
           </div>
 
-          {/* Footer: Termos e Assinatura */}
-          <div className="flex justify-between items-end border-t border-border pt-8 mt-auto">
-            <div className="text-sm text-gray-600">
-              <h4 className="text-muted-foreground font-bold mb-2">
-                Termos e Condições
-              </h4>
-              <p>Válido para os próximos 14 dias</p>
-              <p>Favor emitir pagamentos para: Chaveiro Panorama</p>
-            </div>
+          {/* Footer */}
+          <div className="print:block print-footer">
+            <div className="flex justify-between items-end border-t border-border pt-4">
+              <div className="text-sm text-gray-600">
+                <h4 className="text-muted-foreground font-bold mb-1">
+                  Termos e Condições
+                </h4>
+                <p>Válido para os próximos 14 dias</p>
+                <p>Favor emitir pagamentos para: Chaveiro Panorama</p>
+              </div>
 
-            <div className="flex flex-col items-center">
-              <span className="text-[10px] text-zinc-400 uppercase font-bold mb-2">
-                Desenvolvido Por
-              </span>
-              <Image
-                src={jobbleLogo}
-                alt="Jobble"
-                className="w-16 grayscale opacity-70"
-              />
+              <div className="flex flex-col items-center">
+                <span className="text-[10px] text-zinc-400 uppercase font-bold mb-1">
+                  Desenvolvido Por
+                </span>
+                <Image
+                  src={jobbleLogo}
+                  alt="Jobble"
+                  className="w-14 grayscale opacity-70"
+                />
+              </div>
             </div>
           </div>
         </div>
