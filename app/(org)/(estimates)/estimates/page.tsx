@@ -4,8 +4,6 @@ import EstimatesClient from "./estimates-client";
 export default async function EstimatesPage() {
   const membership = await getOrganization();
 
-  const organization = membership.organization;
-
   const estimates = [
     {
       id: "1",

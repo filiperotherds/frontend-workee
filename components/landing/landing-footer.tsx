@@ -7,6 +7,9 @@ import { Separator } from '../ui/separator';
 import { Instagram, Linkedin } from 'lucide-react';
 
 export default function LandingFooter() {
+
+	const currentYear = new Date().getFullYear();
+
 	return (
 		<div className='relative w-full h-full flex flex-col items-center justify-center'>
 			<div className='w-full flex flex-row items-stretch justify-center gap-px'>
@@ -48,7 +51,7 @@ export default function LandingFooter() {
 							</Link>
 						</div>
 
-                        <div className='flex flex-col items-start justify-start space-y-4'>
+						<div className='flex flex-col items-start justify-start space-y-4'>
 							<h1 className='text-sm font-medium text-primary'>
 								Institucional
 							</h1>
@@ -71,7 +74,7 @@ export default function LandingFooter() {
 
 					<div className='w-full flex flex-row items-center justify-between'>
 						<span className='text-sm font-medium text-muted-foreground'>
-							Copyright © 2025 Jobble LTDA
+							Copyright © {currentYear} Jobble LTDA
 						</span>
 
 						<div className='flex flex-row items-center justify-end space-x-6 text-muted-foreground'>

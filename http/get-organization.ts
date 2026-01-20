@@ -6,6 +6,7 @@ interface GetOrganizationResponse {
         name: string | null;
         avatarUrl: string | null;
         cnpj: string | null;
+        email: string | null;
     } | null;
     role: string;
 }

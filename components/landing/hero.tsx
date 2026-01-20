@@ -1,80 +1,46 @@
 'use client';
 
-import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
-import { Highlighter } from '../ui/highlighter';
-import CtaButton from './cta-button';
 import { Iphone } from '../ui/iphone';
-import Image from 'next/image';
 
-import LpImage from '@/assets/lp-image.png';
+import Link from 'next/link';
+import { Button } from '../ui/button';
+import { ChevronRight } from 'lucide-react';
 
 export default function Hero() {
 	return (
-		<div className='relative w-full h-full flex flex-col items-center justify-center py-px'>
-			<div className='w-full flex flex-row items-stretch justify-center gap-px'>
-				<div className='hidden lg:flex min-w-16 flex-1 bg-white rounded-r-lg' />
-
-				<div className='z-10 h-auto items-center justify-center p-8 w-full max-w-[1232px] flex flex-row bg-white rounded-lg'>
-					<div className='w-full flex flex-col items-start justify-start space-y-10'>
-						<div className='flex flex-row items-center justify-center space-x-3 p-1 pr-3 border border-border rounded-full'>
-							<div className='*:data-[slot=avatar]:ring-background flex -space-x-2 *:data-[slot=avatar]:ring-2'>
-								<Avatar className='size-7'>
-									<AvatarImage
-										src='https://github.com/shadcn.png'
-										alt='@shadcn'
-									/>
-									<AvatarFallback>CN</AvatarFallback>
-								</Avatar>
-								<Avatar className='size-7'>
-									<AvatarImage
-										src='https://github.com/maxleiter.png'
-										alt='@maxleiter'
-									/>
-									<AvatarFallback>LR</AvatarFallback>
-								</Avatar>
-								<Avatar className='size-7'>
-									<AvatarImage
-										src='https://github.com/evilrabbit.png'
-										alt='@evilrabbit'
-									/>
-									<AvatarFallback>ER</AvatarFallback>
-								</Avatar>
-							</div>
-
-							<span className='text-xs font-medium text-muted-foreground'>
-								Escolhido por +600 profissionais
-							</span>
-						</div>
-
-						<h1 className='text-primary text-6xl font-extrabold text-start max-w-[600px]'>
-							Ferramentas e{' '}
-							<Highlighter action='highlight' multiline color='#93c5fd'>
-								clientes
-							</Highlighter>{' '}
-							para{' '}
-							<Highlighter action='underline' multiline color='#facc15'>
-								profissionais
-							</Highlighter>
-						</h1>
-
-						<p className='text-muted-foreground text-lg leading-8 text-start max-w-[600px]'>
-							Alcance a visibilidade que seu trabalho merece e profissionalize
-							toda a sua operação para crescer com segurança. Uma ferramenta
-							completa, pensada para aqueles que constroem o futuro com as
-							próprias mãos.
-						</p>
-
-						<CtaButton title='VAMOS COMEÇAR' />
-					</div>
-
-					<div className='w-full flex flex-col items-end justify-center space-y-10'>
-						<div className='w-full md:max-w-3/4'>
-							<Image src={LpImage} alt='Jobble' className='size-full' />
-						</div>
-					</div>
+		<div className="w-full max-w-7xl flex flex-col md:flex-row items-center justify-between gap-8">
+			<div className='flex flex-col items-start justify-start space-y-6 md:space-y-10 mb-28'>
+				<div className='flex items-center justify-center py-2 px-4 border border-border rounded-full pointer-events-none'>
+					<span className='text-sm font-medium text-white'>
+						Escolhido por +500 profissionais
+					</span>
 				</div>
 
-				<div className='hidden lg:flex min-w-16 flex-1 bg-white rounded-l-lg' />
+				<h1 className="text-4xl md:text-6xl text-white font-extrabold">
+					As ferramentas <br /> que você precisa, <br /> em um só lugar.
+				</h1>
+
+				<p className='text-white/85 text-base md:text-lg leading-8 text-start max-w-[600px]'>
+					Alcance a visibilidade que seu trabalho merece e profissionalize
+					toda a sua operação para crescer com segurança.
+				</p>
+
+				<Link href="/sign-up">
+					<Button
+						className="w-64 h-12 bg-white hover:bg-white/80 text-base text-blue-500 font-semibold rounded-full hover:scale-105"
+					>
+						Começe Grátis
+						<ChevronRight strokeWidth={2.5} />
+					</Button>
+				</Link>
+
+				<p className="text-xs text-white">* Não exigimos cartão de crédito</p>
+			</div>
+
+			<div className="flex-1 flex flex-row items-center justify-end">
+				<div className="w-full max-w-[320px]">
+					<Iphone className="shadow-2xl" src="https://placehold.co/900x1600?text=Jobble." />
+				</div>
 			</div>
 		</div>
 	);

@@ -29,6 +29,7 @@ interface EstimateDocumentProps {
     name: string | null;
     avatarUrl: string | null;
     cnpj: string | null;
+    email: string | null;
   } | null;
   estimate: Estimate;
 }
@@ -56,15 +57,15 @@ const EstimateDocument = forwardRef<HTMLDivElement, EstimateDocumentProps>(
             <h1 className="font-bold text-xl text-gray-800">
               {organization?.name}
             </h1>
-            <p className="text-sm text-gray-600">{}</p>
-            <p className="text-sm text-gray-600">{organization?.name}</p>
+            <p className="text-sm text-gray-600">{cnpj}</p>
+            <p className="text-sm text-gray-600">{organization?.email}</p>
           </div>
 
-          <Image
-            src={jobbleLogo}
-            alt="Jobble"
-            className="w-16 opacity-70 grayscale"
-          />
+          {organization?.avatarUrl ? <img
+            src={organization?.avatarUrl}
+            alt="Organization Logo"
+            className="h-16 opacity-70 grayscale"
+          /> : <></>}
         </div>
 
         <h2 className="text-3xl font-bold text-right text-zinc-700 mb-12">

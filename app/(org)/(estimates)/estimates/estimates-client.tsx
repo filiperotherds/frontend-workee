@@ -29,6 +29,7 @@ interface EstimatesClientProps {
     name: string | null;
     avatarUrl: string | null;
     cnpj: string | null;
+    email: string | null;
   } | null;
   estimates: {
     id: string;
@@ -63,7 +64,7 @@ export default function EstimatesClient({
 
   const handlePrint = useReactToPrint({
     contentRef,
-    documentTitle: "orcamento_0000226",
+    documentTitle: selectedEstimate ? `${selectedEstimate.estimateNo}` : "orçamento",
   });
 
   return (
@@ -73,7 +74,7 @@ export default function EstimatesClient({
         <div>
           <h1 className="text-xl font-bold text-primary">Orçamentos</h1>
           <p className="text-xs text-muted-foreground">
-            Visualização e impressão do orçamento
+            Visualização e impressão dos orçamentos.
           </p>
         </div>
 
@@ -103,7 +104,7 @@ export default function EstimatesClient({
                 variant={"outline"}
                 size={"default"}
                 className="text-destructive hover:text-destructive/70"
-                onClick={() => {}}
+                onClick={() => { }}
               >
                 <Archive />
                 Arquivar
@@ -146,7 +147,7 @@ export default function EstimatesClient({
       </div>
 
       {/* Documento */}
-      <div className="bg-secondary w-full h-full flex flex-row items-start justify-start p-8 rounded-xl">
+      <div className="bg-secondary w-full h-full flex flex-row items-start justify-between p-8 rounded-xl">
         <EstimateList
           estimates={estimates}
           selectedId={selectedId}

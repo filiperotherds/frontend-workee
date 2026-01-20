@@ -1,49 +1,34 @@
-import jobbleLogo from '@/assets/jobble-logo.png';
+import jobbleLogo from '@/assets/jobble-logo-white.png';
 import Image from 'next/image';
-import { NavMenu } from '../nav-menu';
 import Link from 'next/link';
 import { Button } from '../ui/button';
-import { Separator } from '../ui/separator';
+import { ChevronRight } from 'lucide-react';
 
 export default function LandingHeader() {
 	return (
-		<div className='w-full z-20 flex flex-row items-center justify-center gap-px'>
-			<div className='hidden lg:flex min-w-16 flex-1 h-16 bg-white rounded-br-lg' />
+		<div className="w-full max-w-7xl flex flex-row items-center justify-between mb-16">
+			<Image src={jobbleLogo} alt="Jobble" className="w-24" />
 
-			<div className='w-full max-w-[1232px] h-16 flex flex-row items-center justify-between px-8 bg-white rounded-b-lg'>
-				<div className='flex flex-row items-center'>
-					<Link href='/'>
-						<Image src={jobbleLogo} alt='Jobble' className='w-24' />
-					</Link>
-				</div>
+			<div className="flex flex-row items-center justify-center space-x-5">
+				<Link href="/sign-in">
+					<Button
+						size="lg"
+						className="bg-transparent hover:bg-transparent shadow-none border-2 border-white rounded-full font-medium text-white hover:scale-105"
+					>
+						Fazer Login
+					</Button>
+				</Link>
 
-				<div className='h-full flex flex-row items-center justify-center space-x-4'>
-					<NavMenu />
-
-					<div className='h-full py-4'>
-						<Separator orientation='vertical' />
-					</div>
-
-					<Link href='/sign-in'>
-						<Button
-							variant={'link'}
-							className='text-primary hover:text-primary/80 hover:no-underline'>
-							Entrar
-						</Button>
-					</Link>
-
-					<Link href='/sign-up'>
-						<Button
-							variant={'default'}
-							size={'sm'}
-							className='bg-theme-primary text-white hover:bg-theme-primary/80'>
-							Cadastre-se
-						</Button>
-					</Link>
-				</div>
+				<Link href="/sign-up">
+					<Button
+						size="lg"
+						className="bg-white hover:bg-white/80 text-blue-500 font-medium rounded-full hover:scale-105"
+					>
+						Começar Agora
+						<ChevronRight strokeWidth={2.5} />
+					</Button>
+				</Link>
 			</div>
-
-			<div className='hidden lg:flex min-w-16 flex-1 h-16 bg-white rounded-bl-lg' />
 		</div>
 	);
 }
