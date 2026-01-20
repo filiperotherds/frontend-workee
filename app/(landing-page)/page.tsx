@@ -121,7 +121,7 @@ export default function Home() {
               </h1>
 
               <p className="text-muted-foreground text-sm">
-                Cadastre sua empresa na plataforma. Isso leva pouco tempo, pedimos penas alguns poucos dados essênciais.
+                Cadastre sua empresa na plataforma. Isso leva pouco tempo, pedimos apenas alguns poucos dados essênciais.
               </p>
             </div>
 

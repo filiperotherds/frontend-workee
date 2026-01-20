@@ -7,7 +7,29 @@ import { ChevronRight } from 'lucide-react';
 export default function LandingHeader() {
 	return (
 		<div className="w-full max-w-7xl flex flex-row items-center justify-between mb-16">
-			<Image src={jobbleLogo} alt="Jobble" className="w-24" />
+			<div className='flex flex-row items-center justify-center gap-16'>
+				<Image src={jobbleLogo} alt="Jobble" className="w-24" />
+
+				<div className='flex flex-row items-center justify-center gap-8'>
+					<Link href={'/soluções'}>
+						<Button variant={'link'} className='text-white text-base font-medium hover:text-white/80 hover:no-underline'>
+							Soluções
+						</Button>
+					</Link>
+
+					<a href={'https://shop.jobble.com.br'} target='_blank'>
+						<Button variant={'link'} className='text-white text-base font-medium hover:text-white/80 hover:no-underline'>
+							Loja
+						</Button>
+					</a>
+
+					<Link href={'/pricing'}>
+						<Button variant={'link'} className='text-white text-base font-medium hover:text-white/80 hover:no-underline'>
+							Preços
+						</Button>
+					</Link>
+				</div>
+			</div>
 
 			<div className="flex flex-row items-center justify-center space-x-5">
 				<Link href="/sign-in">
