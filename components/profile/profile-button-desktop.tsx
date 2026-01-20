@@ -30,7 +30,7 @@ export async function ProfileButtonDesktop() {
             {user.email}
           </span>
         </div>
-        <div className="p-[2px] rounded-full bg-[radial-gradient(circle_at_30%_107%,#fdf497_0%,#fdf497_5%,#fd5949_45%,#d6249f_60%,#285AEB_90%)]">
+        <div className="p-[2px] rounded-full bg-[radial-gradient(circle_at_30%_107%,#bfdbfe_0%,#60a5fa_5%,#3b82f6_45%,#2563eb_60%,#1e40af_90%)]">
           <div className="p-[2px] bg-white rounded-full">
             <Avatar>
               {user.avatarUrl && <AvatarImage src={user.avatarUrl} />}

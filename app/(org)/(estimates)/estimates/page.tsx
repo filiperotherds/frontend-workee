@@ -1,156 +1,59 @@
-"use client"
+import { getOrganization } from "@/http/get-organization";
+import EstimatesClient from "./estimates-client";
 
-import { EstimateCard } from "@/components/estimate-card";
-import { EstimateComponent } from "@/components/estimate-component";
-import { EstimatesList } from "@/components/estimates-list";
-import { SolicitationList } from "@/components/solicitation-list";
-import { Button } from "@/components/ui/button";
-import { ButtonGroup } from "@/components/ui/button-group";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { useIsMobile } from "@/hooks/use-mobile";
-import {
-  Archive,
-  FileCog,
-  MoreHorizontalIcon,
-  Plus,
-  Printer,
-  ReceiptText,
-  ScrollText,
-  Share,
-} from "lucide-react";
-import Link from "next/link";
-import { useRef } from "react";
-import { useReactToPrint } from "react-to-print";
+export default async function EstimatesPage() {
+  const membership = await getOrganization();
 
-export default function Estimates() {
-  const contentRef = useRef<HTMLDivElement>(null);
+  const organization = membership.organization;
 
-  const handlePrint = useReactToPrint({
-    contentRef,
-    documentTitle: "orcamento_0000226",
-  });
-
-  const isMobile = useIsMobile();
-
-  if (isMobile) {
-    return (
-      <div className="w-full flex flex-col items-start justify-start space-y-8">
-        <div className="w-full flex flex-row items-center justify-between">
-          <div className="flex flex-col items-start justify-start space-y-0.5">
-            <h1 className="text-xl text-primary font-bold">Orçamentos</h1>
-            <span className="text-xs text-muted-foreground">
-              A lista de orçamentos do seu negócio.
-            </span>
-          </div>
-
-          <Button variant={"ghost"} size={"icon"}>
-            <ScrollText className="text-muted-foreground" />
-          </Button>
-        </div>
-
-        <Link href={"/organization/estimates/create"} className="w-full">
-          <Button
-            className="w-full bg-zinc-700"
-            variant={"default"}
-            size={"lg"}
-          >
-            <ReceiptText />
-            Novo Orçamento
-          </Button>
-        </Link>
-
-        <SolicitationList isCompact />
-
-        <EstimateCard />
-      </div>
-    );
-  }
+  const estimates = [
+    {
+      id: "1",
+      estimateNo: "EST-001",
+      date: "2024-01-15",
+      dueDate: "2024-02-15",
+      tax: 25,
+      customer: {
+        name: "Acme Corp",
+        address: "123 Business St, City, State 12345",
+      },
+      items: [
+        {
+          qty: 2,
+          description: "Web Development Services",
+          unitPrice: 5000,
+        },
+        {
+          qty: 1,
+          description: "UI/UX Design",
+          unitPrice: 2500,
+        },
+      ],
+    },
+    {
+      id: "2",
+      estimateNo: "EST-002",
+      date: "2024-01-18",
+      dueDate: "2024-02-18",
+      tax: 25,
+      customer: {
+        name: "Tech Solutions Inc",
+        address: "456 Innovation Ave, Tech City, State 67890",
+      },
+      items: [
+        {
+          qty: 5,
+          description: "Consulting Hours",
+          unitPrice: 250,
+        },
+      ],
+    },
+  ];
 
   return (
-    <div className="w-full flex flex-col items-start justify-start space-y-8">
-      <div className="w-full flex flex-row items-center justify-between">
-        <div className="flex flex-col items-start justify-start space-y-0.5">
-          <h1 className="text-xl text-primary font-bold">Orçamentos</h1>
-          <span className="text-xs text-muted-foreground">
-            A lista de orçamentos do seu negócio.
-          </span>
-        </div>
-
-        <div className="flex flex-row items-center justify-center space-x-4">
-          <ButtonGroup>
-            <ButtonGroup>
-              <Button variant={"outline"} size={"default"}>
-                <FileCog />
-                Editar
-              </Button>
-
-              <Button variant={"outline"} size={"default"}>
-                <Share />
-                Compartilhar
-              </Button>
-
-              <Button
-                variant={"outline"}
-                size={"default"}
-                onClick={() => handlePrint()}
-              >
-                <Printer />
-                Imprimir
-              </Button>
-
-              <Button
-                variant={"outline"}
-                size={"default"}
-                className="text-destructive hover:text-destructive/70"
-                onClick={() => { }}
-              >
-                <Archive />
-                Arquivar
-              </Button>
-            </ButtonGroup>
-
-            <ButtonGroup>
-              <Button variant={"outline"}>
-                <Plus strokeWidth={3} />
-                Novo Orçamento
-              </Button>
-
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="outline" size="icon" aria-label="More Options">
-                    <MoreHorizontalIcon />
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end">
-                  <DropdownMenuGroup>
-                    <Link href="/archived-estimate">
-                      <DropdownMenuItem
-                        variant="default"
-                        className="hover:cursor-pointer"
-                      >
-                        <Archive />
-                        Arquivados
-                      </DropdownMenuItem>
-                    </Link>
-                  </DropdownMenuGroup>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </ButtonGroup>
-          </ButtonGroup>
-        </div>
-      </div>
-
-      <div className="w-full h-full flex flex-row items-start justify-start border border-border">
-        <EstimatesList />
-
-        <EstimateComponent ref={contentRef} />
-      </div>
-    </div>
+    <EstimatesClient
+      organization={membership.organization}
+      estimates={estimates}
+    />
   );
 }
