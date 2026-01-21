@@ -4,25 +4,16 @@ import { useMemo, useRef, useState } from "react";
 import { useReactToPrint } from "react-to-print";
 import { Button } from "@/components/ui/button";
 import {
-  Archive,
-  FileCog,
-  MoreHorizontalIcon,
-  Plus,
-  Printer,
-  Share,
+  Archive, Eye, FilePen, Printer,
+  Share
 } from "lucide-react";
 import EstimateDocument from "./estimate-document";
-import { ButtonGroup } from "@/components/ui/button-group";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import Link from "next/link";
 import { EstimateList } from "./estimate-list";
 import { Separator } from "@/components/ui/separator";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import { Badge } from "@/components/ui/badge";
+import { ShareButton } from "@/components/share-button";
+import { ArchiveButton } from "@/components/archive-button";
 
 interface EstimatesClientProps {
   organization: {
@@ -38,6 +29,7 @@ interface EstimatesClientProps {
     date: string;
     dueDate: string;
     tax: number;
+    status: string;
     customer: {
       name: string;
       address: string;
@@ -71,93 +63,90 @@ export default function EstimatesClient({
   });
 
   return (
-    <div className="w-full flex flex-col space-y-6">
-      {/* Header
-      <div className="flex justify-between items-center">
-        <div>
-          <h1 className="text-xl font-bold text-primary">Orçamentos</h1>
-          <p className="text-xs text-muted-foreground">
-            Visualização e impressão dos orçamentos.
-          </p>
-        </div>
+    <div className="bg-secondary w-full h-[calc(100vh-80px)] flex flex-row justify-between gap-1">
+      <EstimateList
+        estimates={estimates}
+        selectedId={selectedId}
+        onSelect={setSelectedId}
+      />
 
-        <div className="flex flex-row items-center justify-center space-x-4">
-          <ButtonGroup>
-            <ButtonGroup>
-              <Button variant={"outline"} size={"default"}>
-                <FileCog />
-                Editar
-              </Button>
+      <div className="w-full h-full flex flex-col items-center justify-start space-y-4 rounded-lg border border-border/60 p-4 bg-white">
 
-              <Button variant={"outline"} size={"default"}>
-                <Share />
-                Compartilhar
-              </Button>
+        <div className="w-full flex flex-row items-center justify-between space-x-4">
+          <div className="flex flex-row items-center justify-center gap-2">
+            <Badge variant={"secondary"} className={`pointer-events-none ${selectedEstimate?.status === "pending" ? "text-muted-foreground/80 bg-zinc-100" : "text-green-500 bg-green-500/5"}`} >
+              {selectedEstimate?.status === "pending" ? "Pendente" : "Aprovado"}
+            </Badge>
 
-              <Button
-                variant={"outline"}
-                size={"default"}
-                onClick={() => handlePrint()}
-              >
-                <Printer />
-                Imprimir
-              </Button>
-
-              <Button
-                variant={"outline"}
-                size={"default"}
-                className="text-destructive hover:text-destructive/70"
-                onClick={() => {}}
-              >
-                <Archive />
-                Arquivar
-              </Button>
-            </ButtonGroup>
-
-            <ButtonGroup>
-              <Button variant={"outline"}>
-                <Plus strokeWidth={3} />
-                Novo Orçamento
-              </Button>
-
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <a href={`https://jobble.com.br/estimates/${selectedEstimate?.id}`} target="_blank">
                   <Button
-                    variant="outline"
-                    size="icon"
-                    aria-label="More Options"
+                    variant={"ghost"}
+                    size={"icon"}
+                    className="text-muted-foreground"
                   >
-                    <MoreHorizontalIcon />
+                    <Eye />
                   </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end">
-                  <DropdownMenuGroup>
-                    <Link href="/archived-estimate">
-                      <DropdownMenuItem
-                        variant="default"
-                        className="hover:cursor-pointer"
-                      >
-                        <Archive />
-                        Arquivados
-                      </DropdownMenuItem>
-                    </Link>
-                  </DropdownMenuGroup>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </ButtonGroup>
-          </ButtonGroup>
+                </a>
+              </TooltipTrigger>
+              <TooltipContent side="bottom">
+                <p>Visualizar</p>
+              </TooltipContent>
+            </Tooltip>
+          </div>
+
+          <div className="flex flex-row items-center justify-center gap-2">
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  disabled={selectedEstimate?.status === "approved"}
+                  variant={"ghost"}
+                  size={"icon"}
+                  className="text-muted-foreground"
+                  onClick={() => { }}
+                >
+                  <FilePen />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent side="bottom">
+                <p>Editar</p>
+              </TooltipContent>
+            </Tooltip>
+
+            <ShareButton estimate={selectedEstimate} />
+
+
+
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  variant={"ghost"}
+                  size={"icon"}
+                  className="text-muted-foreground"
+                  onClick={() => handlePrint()}
+                >
+                  <Printer />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent side="bottom">
+                <p>Imprimir</p>
+              </TooltipContent>
+            </Tooltip>
+
+            <ArchiveButton />
+          </div>
         </div>
-      </div> */}
 
-      {/* Documento */}
-      <div className="bg-secondary w-full h-full flex flex-row items-start justify-between gap-1">
-        <EstimateList
-          estimates={estimates}
-          selectedId={selectedId}
-          onSelect={setSelectedId}
-        />
+        <div className="w-full">
+          <h1 className="text-lg font-medium text-primary">
+            {selectedEstimate?.estimateNo} - {selectedEstimate?.customer.name}
+          </h1>
+        </div>
 
-        <div className="w-full h-full flex flex-col items-center justify-start rounded-lg border border-border/60 p-4 bg-white">
+        <Separator />
+
+        <div className="h-full w-full flex flex-col items-center no-scrollbar overflow-y-auto">
           {selectedEstimate && (
             <EstimateDocument
               ref={contentRef}

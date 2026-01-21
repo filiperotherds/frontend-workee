@@ -6,11 +6,12 @@ export default async function EstimatesPage() {
 
   const estimates = [
     {
-      id: "1",
+      id: "d6f6821c-78a9-45cb-a8b9-5c8400e3aa39",
       estimateNo: "EST-001",
       date: "2024-01-15",
       dueDate: "2024-02-15",
       tax: 25,
+      status: "pending",
       customer: {
         name: "Acme Corp",
         address: "123 Business St, City, State 12345",
@@ -29,11 +30,12 @@ export default async function EstimatesPage() {
       ],
     },
     {
-      id: "2",
+      id: "05ab3d91-54b5-478c-90ec-0760ca0a12b8",
       estimateNo: "EST-002",
       date: "2024-01-18",
       dueDate: "2024-02-18",
       tax: 25,
+      status: "approved",
       customer: {
         name: "Tech Solutions Inc",
         address: "456 Innovation Ave, Tech City, State 67890",

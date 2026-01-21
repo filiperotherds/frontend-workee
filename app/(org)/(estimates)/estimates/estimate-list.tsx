@@ -1,9 +1,11 @@
 "use client";
 
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { InputGroup, InputGroupAddon, InputGroupInput } from "@/components/ui/input-group";
 import { cn } from "@/lib/utils";
-import { FolderOpen, RefreshCcw } from "lucide-react";
+import { FolderOpen, RefreshCcw, Search } from "lucide-react";
 
 interface EstimateSummary {
   id: string;
@@ -36,7 +38,14 @@ export function EstimateList({
   return (
     <div className="w-96 h-full flex flex-col bg-white rounded-lg border border-border/60 p-4 gap-4">
       <div className="flex flex-row items-center justify-start gap-1">
-        <Input placeholder="Pesquisar..." />
+        <InputGroup>
+          <InputGroupInput placeholder="Pesquisar..." />
+          <InputGroupAddon>
+            <Search />
+          </InputGroupAddon>
+        </InputGroup>
+
+
 
         <Button
           size={"icon"}
@@ -47,7 +56,7 @@ export function EstimateList({
         </Button>
       </div>
 
-      <div className="flex flex-col space-y-8">
+      <div className="flex flex-col space-y-8 flex-1 overflow-y-auto min-h-0">
         <div className="flex flex-col space-y-4">
           <label className="text-xs text-muted-foreground">
             Solicitações Pendentes
@@ -70,7 +79,7 @@ export function EstimateList({
 
         <div className="flex flex-col space-y-4">
           <label className="text-xs text-muted-foreground">
-            Cotações Ativas
+            Orçamentos Ativos
           </label>
 
           <div className="flex flex-col space-y-1">
@@ -94,24 +103,23 @@ export function EstimateList({
                   key={estimate.id}
                   onClick={() => onSelect(estimate.id)}
                   className={cn(
-                    "w-full bg-white rounded-md text-left py-2 px-3 hover:bg-zinc-100 transition-colors",
+                    "group w-full bg-white rounded-md text-left py-2 px-3 hover:bg-zinc-100 transition-colors",
                     isActive && "bg-zinc-100"
                   )}
                 >
                   <div className="flex justify-between items-start mb-1">
-                    <span className="font-medium text-sm">
-                      {estimate.customer.name}
+                    <span className="font-medium text-sm truncate">
+                      {estimate.estimateNo} - {estimate.customer.name}
                     </span>
+
                     <span className="text-xs text-muted-foreground">
                       {formattedDate}
                     </span>
                   </div>
 
                   <p className="text-xs text-muted-foreground truncate">
-                    R${total.toFixed(2)}
+                    {estimate.items[0].description}
                   </p>
-
-                  <p className="text-sm font-semibold text-primary mt-2"></p>
                 </button>
               );
             })}

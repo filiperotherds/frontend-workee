@@ -30,6 +30,7 @@ import {
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { Button } from "./ui/button";
+import { NewEstimateButton } from "./new-estimate-button";
 
 const navGroups = [
   {
@@ -41,14 +42,14 @@ const navGroups = [
         icon: LayoutDashboard,
       },
       {
+        title: "Contas a Pagar",
+        url: "/accounts-payable",
+        icon: BanknoteArrowDown,
+      },
+      {
         title: "Serviços",
         url: "/services",
         icon: Layers,
-      },
-      {
-        title: "Clientes",
-        url: "/customers",
-        icon: User,
       },
     ],
   },
@@ -59,6 +60,7 @@ const navGroups = [
         title: "Orçamentos Ativos",
         url: "/estimates",
         icon: Inbox,
+        pending: 3,
       },
       {
         title: "Arquivados",
@@ -97,14 +99,8 @@ export default function AppSidebar() {
 
   return (
     <Sidebar>
-      <SidebarHeader>
-        <Button
-          size={"default"}
-          className="w-full bg-blue-500 hover:bg-blue-500/80 text-white hover:text-white"
-        >
-          <Plus />
-          Novo Orçamento
-        </Button>
+      <SidebarHeader className="-mt-1">
+        <NewEstimateButton />
       </SidebarHeader>
       <SidebarContent>
         {navGroups.map((group) => (
@@ -120,13 +116,14 @@ export default function AppSidebar() {
                       <SidebarMenuButton
                         asChild
                         isActive={isActive}
-                        className={`text-primary font-normal ${
-                          isActive ? "" : "[&>svg]:text-muted-foreground"
-                        }`}
+                        className={`text-primary hover:[&>svg]:text-blue-500 font-normal ${isActive ? "" : "[&>svg]:text-muted-foreground"
+                          }`}
                       >
                         <Link href={item.url}>
                           <item.icon size={16} />
                           <span>{item.title}</span>
+
+                          {item.pending ? <span className="absolute right-3 text-muted-foreground text-xs">{item.pending}</span> : ""}
                         </Link>
                       </SidebarMenuButton>
                     </SidebarMenuItem>
@@ -138,10 +135,8 @@ export default function AppSidebar() {
         ))}
       </SidebarContent>
 
-      <Separator />
-
       <SidebarFooter>
-        <div className="p-2 w-full flex flex-col items-start justify-start space-y-4">
+        <div className="w-full flex flex-col items-start justify-start space-y-4">
           {/* <OrganizationButton /> */}
 
           <p className="text-xs text-muted-foreground">

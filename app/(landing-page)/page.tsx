@@ -67,7 +67,7 @@ export default function Home() {
                 action="underline"
                 color="#3b82f6"
                 multiline
-                strokeWidth={2}
+                strokeWidth={5}
               >
                 profissionais
               </Highlighter>
@@ -100,7 +100,7 @@ export default function Home() {
 
             <h1 className="text-4xl font-bold leading-10 text-center md:text-left">
               Comece na{" "}
-              <Highlighter action="underline" color="#3b82f6">
+              <Highlighter action="underline" color="#3b82f6" strokeWidth={5}>
                 Jobble
               </Highlighter>{" "}
               <br /> em 5 minutos
@@ -173,7 +173,7 @@ export default function Home() {
                 action="underline"
                 color="#3b82f6"
                 multiline
-                strokeWidth={2}
+                strokeWidth={5}
               >
                 seu time
               </Highlighter>

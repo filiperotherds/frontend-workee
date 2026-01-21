@@ -21,8 +21,8 @@ export default async function OrgAppLayout({
         <Header />
 
         <main className="w-full h-full">
-          <div className="w-full h-full p-8 md:px-4 md:py-0 gap-4 items-start justify-start flex flex-col md:flex-row bg-white md:bg-secondary rounded-t-2xl">
-            <SidebarProvider className="h-max">
+          <div className="w-full h-full p-8 md:px-4 md:py-0 gap-4 items-start justify-start flex flex-col md:flex-row bg-white md:bg-secondary">
+            <SidebarProvider>
               <AppSidebar />
 
               {children}

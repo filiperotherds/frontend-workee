@@ -5,9 +5,9 @@ import jobbleLogo from "@/assets/jobble-logo.png";
 
 export function Header() {
   return (
-    <div className="md:sticky top-0 z-20 w-full h-16 px-8 flex items-center justify-between bg-secondary">
+    <div className="md:sticky top-0 z-20 w-full h-16 px-4 flex items-center justify-between bg-secondary">
       <div className="flex flex-row items-center">
-        <Image src={jobbleLogo} alt="Jobble" className="w-24" />
+        <Image src={jobbleLogo} alt="Jobble" className="w-20" />
       </div>
 
       <div className="flex items-center">
