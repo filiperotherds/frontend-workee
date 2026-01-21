@@ -134,7 +134,7 @@ export default function EstimatesClient({
               </TooltipContent>
             </Tooltip>
 
-            <ArchiveButton />
+            <ArchiveButton estimate={selectedEstimate} />
           </div>
         </div>
 

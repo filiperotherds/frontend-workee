@@ -12,7 +12,7 @@ import { Archive } from "lucide-react"
 import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip"
 
 interface archiveButtonProps {
-    estimate: {
+    estimate?: {
         id: string;
         estimateNo: string;
         date: string;
