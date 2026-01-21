@@ -22,7 +22,7 @@ import {
 import { RiWhatsappLine } from "react-icons/ri";
 
 interface shareButtonProps {
-    estimate: {
+    estimate?: {
         id: string;
         estimateNo: string;
         date: string;
