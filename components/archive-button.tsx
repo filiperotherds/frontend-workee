@@ -50,7 +50,7 @@ export function ArchiveButton({ estimate }: archiveButtonProps) {
                 <TooltipContent side="bottom">
                     <p>Arquivar</p>
                 </TooltipContent>
-                <AlertDialogContent size="sm" className="sm:max-w-md rounded-2xl p-4">
+                <AlertDialogContent className="sm:max-w-md rounded-2xl p-4">
                     <AlertDialogHeader className="gap-0">
                         <AlertDialogTitle className="font-sans text-base">Arquivar Orçamento?</AlertDialogTitle>
                         <AlertDialogDescription>
