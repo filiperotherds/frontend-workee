@@ -1,6 +1,9 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
+import { FolderOpen, RefreshCcw } from "lucide-react";
 
 interface EstimateSummary {
   id: string;
@@ -31,50 +34,90 @@ export function EstimateList({
   onSelect,
 }: EstimateListProps) {
   return (
-    <aside className="w-[320px] border-r border-border bg-background">
-      <div className="p-4 border-b border-border">
-        <h2 className="text-sm font-bold text-muted-foreground">Orçamentos</h2>
+    <div className="w-96 h-full flex flex-col bg-white rounded-lg border border-border/60 p-4 gap-4">
+      <div className="flex flex-row items-center justify-start gap-1">
+        <Input placeholder="Pesquisar..." />
+
+        <Button
+          size={"icon"}
+          variant={"ghost"}
+          className="text-muted-foreground hover:text-primary transition-colors"
+        >
+          <RefreshCcw />
+        </Button>
       </div>
 
-      <div className="flex flex-col divide-y">
-        {estimates.map((estimate) => {
-          const total =
-            estimate.items.reduce(
-              (sum, item) => sum + item.unitPrice * item.qty,
-              0
-            ) + estimate.tax;
+      <div className="flex flex-col space-y-8">
+        <div className="flex flex-col space-y-4">
+          <label className="text-xs text-muted-foreground">
+            Solicitações Pendentes
+          </label>
 
-          const isActive = estimate.id === selectedId;
-
-          return (
-            <button
-              key={estimate.id}
-              onClick={() => onSelect(estimate.id)}
-              className={cn(
-                "w-full text-left p-4 transition-colors hover:bg-muted",
-                isActive && "bg-muted"
-              )}
-            >
-              <div className="flex justify-between items-start mb-1">
-                <span className="font-bold text-sm">
-                  #{estimate.estimateNo}
-                </span>
-                <span className="text-xs text-muted-foreground">
-                  {estimate.date}
-                </span>
+          <div className="flex flex-col space-y-1">
+            <div className="flex flex-col items-center justify-center space-y-2">
+              <div className="size-10 flex items-center justify-center rounded-lg bg-secondary">
+                <FolderOpen size={20} className="text-muted-foreground" />
               </div>
 
-              <p className="text-sm text-gray-700 truncate">
-                {estimate.customer.name}
-              </p>
+              <h1 className="text-xs text-primary">Sem Solicitações Ainda</h1>
 
-              <p className="text-sm font-semibold text-primary mt-2">
-                R${total.toFixed(2)}
+              <p className="text-xs text-muted-foreground text-center">
+                Suas solicitações de orçamentos pendentes aparecerão aqui.
               </p>
-            </button>
-          );
-        })}
+            </div>
+          </div>
+        </div>
+
+        <div className="flex flex-col space-y-4">
+          <label className="text-xs text-muted-foreground">
+            Cotações Ativas
+          </label>
+
+          <div className="flex flex-col space-y-1">
+            {estimates.map((estimate) => {
+              const total =
+                estimate.items.reduce(
+                  (sum, item) => sum + item.unitPrice * item.qty,
+                  0
+                ) + estimate.tax;
+
+              const date = new Date(estimate.date);
+              const formattedDate = date.toLocaleDateString("pt-BR", {
+                month: "short",
+                day: "numeric",
+              });
+
+              const isActive = estimate.id === selectedId;
+
+              return (
+                <button
+                  key={estimate.id}
+                  onClick={() => onSelect(estimate.id)}
+                  className={cn(
+                    "w-full bg-white rounded-md text-left py-2 px-3 hover:bg-zinc-100 transition-colors",
+                    isActive && "bg-zinc-100"
+                  )}
+                >
+                  <div className="flex justify-between items-start mb-1">
+                    <span className="font-medium text-sm">
+                      {estimate.customer.name}
+                    </span>
+                    <span className="text-xs text-muted-foreground">
+                      {formattedDate}
+                    </span>
+                  </div>
+
+                  <p className="text-xs text-muted-foreground truncate">
+                    R${total.toFixed(2)}
+                  </p>
+
+                  <p className="text-sm font-semibold text-primary mt-2"></p>
+                </button>
+              );
+            })}
+          </div>
+        </div>
       </div>
-    </aside>
+    </div>
   );
 }

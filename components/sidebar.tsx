@@ -1,9 +1,13 @@
 "use client";
 
 import {
+  Archive,
   BanknoteArrowDown,
+  FilePlusCorner,
+  Inbox,
   Layers,
   LayoutDashboard,
+  Plus,
   ReceiptText,
   Ticket,
   Trophy,
@@ -25,22 +29,16 @@ import {
 } from "./ui/sidebar";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-
-import logo from "@/assets/jobble-professionals.png";
+import { Button } from "./ui/button";
 
 const navGroups = [
   {
-    label: "Operacional",
+    label: "Geral",
     items: [
       {
         title: "Início",
         url: "/dashboard",
         icon: LayoutDashboard,
-      },
-      {
-        title: "Orçamentos",
-        url: "/estimates",
-        icon: ReceiptText,
       },
       {
         title: "Serviços",
@@ -51,6 +49,21 @@ const navGroups = [
         title: "Clientes",
         url: "/customers",
         icon: User,
+      },
+    ],
+  },
+  {
+    label: "Orçamentos",
+    items: [
+      {
+        title: "Orçamentos Ativos",
+        url: "/estimates",
+        icon: Inbox,
+      },
+      {
+        title: "Arquivados",
+        url: "/archived-estimates",
+        icon: Archive,
       },
     ],
   },
@@ -69,21 +82,6 @@ const navGroups = [
       },
     ],
   },
-  {
-    label: "Parceiros",
-    items: [
-      {
-        title: "Prêmios",
-        url: "/organization/awards",
-        icon: Trophy,
-      },
-      {
-        title: "Afiliados",
-        url: "/organization/afiliate",
-        icon: Ticket,
-      },
-    ],
-  },
 ];
 
 export default function AppSidebar() {
@@ -99,6 +97,15 @@ export default function AppSidebar() {
 
   return (
     <Sidebar>
+      <SidebarHeader>
+        <Button
+          size={"default"}
+          className="w-full bg-blue-500 hover:bg-blue-500/80 text-white hover:text-white"
+        >
+          <Plus />
+          Novo Orçamento
+        </Button>
+      </SidebarHeader>
       <SidebarContent>
         {navGroups.map((group) => (
           <SidebarGroup key={group.label}>
@@ -110,7 +117,13 @@ export default function AppSidebar() {
 
                   return (
                     <SidebarMenuItem key={item.title}>
-                      <SidebarMenuButton asChild isActive={isActive}>
+                      <SidebarMenuButton
+                        asChild
+                        isActive={isActive}
+                        className={`text-primary font-normal ${
+                          isActive ? "" : "[&>svg]:text-muted-foreground"
+                        }`}
+                      >
                         <Link href={item.url}>
                           <item.icon size={16} />
                           <span>{item.title}</span>

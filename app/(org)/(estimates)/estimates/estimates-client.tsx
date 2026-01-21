@@ -22,6 +22,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import Link from "next/link";
 import { EstimateList } from "./estimate-list";
+import { Separator } from "@/components/ui/separator";
 
 interface EstimatesClientProps {
   organization: {
@@ -64,12 +65,14 @@ export default function EstimatesClient({
 
   const handlePrint = useReactToPrint({
     contentRef,
-    documentTitle: selectedEstimate ? `${selectedEstimate.estimateNo}` : "orçamento",
+    documentTitle: selectedEstimate
+      ? `${selectedEstimate.estimateNo}`
+      : "orçamento",
   });
 
   return (
     <div className="w-full flex flex-col space-y-6">
-      {/* Header */}
+      {/* Header
       <div className="flex justify-between items-center">
         <div>
           <h1 className="text-xl font-bold text-primary">Orçamentos</h1>
@@ -104,7 +107,7 @@ export default function EstimatesClient({
                 variant={"outline"}
                 size={"default"}
                 className="text-destructive hover:text-destructive/70"
-                onClick={() => { }}
+                onClick={() => {}}
               >
                 <Archive />
                 Arquivar
@@ -144,23 +147,25 @@ export default function EstimatesClient({
             </ButtonGroup>
           </ButtonGroup>
         </div>
-      </div>
+      </div> */}
 
       {/* Documento */}
-      <div className="bg-secondary w-full h-full flex flex-row items-start justify-between p-8 rounded-xl">
+      <div className="bg-secondary w-full h-full flex flex-row items-start justify-between gap-1">
         <EstimateList
           estimates={estimates}
           selectedId={selectedId}
           onSelect={setSelectedId}
         />
 
-        {selectedEstimate && (
-          <EstimateDocument
-            ref={contentRef}
-            organization={organization}
-            estimate={selectedEstimate}
-          />
-        )}
+        <div className="w-full h-full flex flex-col items-center justify-start rounded-lg border border-border/60 p-4 bg-white">
+          {selectedEstimate && (
+            <EstimateDocument
+              ref={contentRef}
+              organization={organization}
+              estimate={selectedEstimate}
+            />
+          )}
+        </div>
       </div>
     </div>
   );
