@@ -58,7 +58,11 @@ export function ArchiveButton({ estimate }: archiveButtonProps) {
                         </AlertDialogDescription>
                     </AlertDialogHeader>
                     <AlertDialogFooter>
-                        <AlertDialogCancel variant="outline" className="h-8 text-muted-foreground">Cancelar</AlertDialogCancel>
+                        <AlertDialogCancel asChild>
+                            <Button className="h-8 text-muted-foreground">
+                                Cancelar
+                            </Button>
+                        </AlertDialogCancel>
                         <AlertDialogAction asChild>
                             <Button variant={"ghost"} className="h-8 bg-red-50 hover:bg-red-100 text-destructive hover:text-destructive">
                                 <Archive />
