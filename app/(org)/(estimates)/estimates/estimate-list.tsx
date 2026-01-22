@@ -3,7 +3,11 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { InputGroup, InputGroupAddon, InputGroupInput } from "@/components/ui/input-group";
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+} from "@/components/ui/input-group";
 import { cn } from "@/lib/utils";
 import { FolderOpen, RefreshCcw, Search } from "lucide-react";
 
@@ -13,6 +17,7 @@ interface EstimateSummary {
   date: string;
   dueDate: string;
   tax: number;
+  status: string;
   customer: {
     name: string;
     address: string;
@@ -44,8 +49,6 @@ export function EstimateList({
             <Search />
           </InputGroupAddon>
         </InputGroup>
-
-
 
         <Button
           size={"icon"}
@@ -107,12 +110,20 @@ export function EstimateList({
                     isActive && "bg-zinc-100"
                   )}
                 >
-                  <div className="flex justify-between items-start mb-1">
-                    <span className="font-medium text-sm truncate">
-                      {estimate.estimateNo} - {estimate.customer.name}
-                    </span>
+                  <div className="flex justify-between items-start gap-4 mb-1">
+                    <div className="flex flex-row items-center justify-center space-x-2 min-w-0">
+                      <span className="font-medium text-sm truncate">
+                        {estimate.estimateNo} - {estimate.customer.name}
+                      </span>
 
-                    <span className="text-xs text-muted-foreground">
+                      {estimate.status === "approved" ? (
+                        <span className="size-2 bg-green-400 rounded-full shrink-0" />
+                      ) : (
+                        <></>
+                      )}
+                    </div>
+
+                    <span className="text-xs text-muted-foreground whitespace-nowrap shrink-0">
                       {formattedDate}
                     </span>
                   </div>

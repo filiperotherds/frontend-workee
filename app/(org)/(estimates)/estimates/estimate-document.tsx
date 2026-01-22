@@ -61,15 +61,19 @@ const EstimateDocument = forwardRef<HTMLDivElement, EstimateDocumentProps>(
             <p className="text-sm text-gray-600">{organization?.email}</p>
           </div>
 
-          {organization?.avatarUrl ? <img
-            src={organization?.avatarUrl}
-            alt="Organization Logo"
-            className="h-16 opacity-70 grayscale"
-          /> : <></>}
+          {organization?.avatarUrl ? (
+            <img
+              src={organization?.avatarUrl}
+              alt="Organization Logo"
+              className="h-16 opacity-70 grayscale"
+            />
+          ) : (
+            <></>
+          )}
         </div>
 
         <h2 className="text-3xl font-bold text-right text-zinc-700 mb-12">
-          ORÇAMENTO
+          ORÇAMENTO {estimate.estimateNo}
         </h2>
 
         {/* Cliente */}
@@ -86,16 +90,22 @@ const EstimateDocument = forwardRef<HTMLDivElement, EstimateDocumentProps>(
 
           <div className="space-y-1 text-sm">
             <div className="flex justify-between gap-6">
-              <span className="font-bold text-muted-foreground">Orçamento</span>
-              <span>{estimate.estimateNo}</span>
-            </div>
-            <div className="flex justify-between gap-6">
-              <span className="font-bold text-muted-foreground">estimate</span>
+              <span className="font-semibold text-muted-foreground">
+                Data do Orçamento
+              </span>
               <span>{estimate.date}</span>
             </div>
             <div className="flex justify-between gap-6">
-              <span className="font-bold text-muted-foreground">Validade</span>
-              <span>{estimate.dueDate}</span>
+              <span className="font-semibold text-muted-foreground">
+                Prazo de Entrega
+              </span>
+              <span> CRIAR CAMPO </span>
+            </div>
+            <div className="flex justify-between gap-6">
+              <span className="font-semibold text-muted-foreground">
+                Garantia
+              </span>
+              <span> GERAR CAMPO </span>
             </div>
           </div>
         </div>
