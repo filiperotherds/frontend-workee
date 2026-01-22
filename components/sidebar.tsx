@@ -2,19 +2,11 @@
 
 import {
   Archive,
-  BanknoteArrowDown,
-  FilePlusCorner,
-  Inbox,
+  BanknoteArrowDown, Inbox,
   Layers,
   LayoutDashboard,
-  Plus,
-  ReceiptText,
-  Ticket,
-  Trophy,
-  User,
-  Wallet,
+  Package, Wrench
 } from "lucide-react";
-import { Separator } from "./ui/separator";
 import {
   Sidebar,
   SidebarContent,
@@ -29,7 +21,6 @@ import {
 } from "./ui/sidebar";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { Button } from "./ui/button";
 import { NewEstimateButton } from "./new-estimate-button";
 
 const navGroups = [
@@ -45,11 +36,6 @@ const navGroups = [
         title: "Contas a Pagar",
         url: "/accounts-payable",
         icon: BanknoteArrowDown,
-      },
-      {
-        title: "Serviços",
-        url: "/services",
-        icon: Layers,
       },
     ],
   },
@@ -70,17 +56,17 @@ const navGroups = [
     ],
   },
   {
-    label: "Pagamentos",
+    label: "Cadastros",
     items: [
       {
-        title: "Cobranças",
-        url: "/organization/payments",
-        icon: BanknoteArrowDown,
+        title: "Produtos",
+        url: "/products",
+        icon: Package,
       },
       {
-        title: "Carteira",
-        url: "/organization/wallet",
-        icon: Wallet,
+        title: "Serviços",
+        url: "/services",
+        icon: Wrench,
       },
     ],
   },
