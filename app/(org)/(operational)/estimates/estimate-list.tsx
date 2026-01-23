@@ -1,15 +1,15 @@
 "use client";
 
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
 } from "@/components/ui/input-group";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
-import { FolderOpen, RefreshCcw, Search } from "lucide-react";
+import { FolderOpen, History, Search } from "lucide-react";
+import Link from "next/link";
 
 interface EstimateSummary {
   id: string;
@@ -50,13 +50,24 @@ export function EstimateList({
           </InputGroupAddon>
         </InputGroup>
 
-        <Button
-          size={"icon"}
-          variant={"ghost"}
-          className="text-muted-foreground hover:text-primary transition-colors"
-        >
-          <RefreshCcw />
-        </Button>
+
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Link href="/estimates/history">
+              <Button
+                size={"icon"}
+                variant={"ghost"}
+                className="text-muted-foreground hover:text-primary transition-colors"
+              >
+                <History />
+              </Button>
+            </Link>
+          </TooltipTrigger>
+          <TooltipContent side="bottom">
+            <p>Histórico</p>
+          </TooltipContent>
+        </Tooltip>
+
       </div>
 
       <div className="flex flex-col space-y-8 flex-1 overflow-y-auto min-h-0">
@@ -111,17 +122,9 @@ export function EstimateList({
                   )}
                 >
                   <div className="flex justify-between items-start gap-4 mb-1">
-                    <div className="flex flex-row items-center justify-center space-x-2 min-w-0">
-                      <span className="font-medium text-sm truncate">
-                        {estimate.estimateNo} - {estimate.customer.name}
-                      </span>
-
-                      {estimate.status === "approved" ? (
-                        <span className="size-2 bg-green-400 rounded-full shrink-0" />
-                      ) : (
-                        <></>
-                      )}
-                    </div>
+                    <span className="font-medium text-sm truncate">
+                      {estimate.estimateNo} - {estimate.customer.name}
+                    </span>
 
                     <span className="text-xs text-muted-foreground whitespace-nowrap shrink-0">
                       {formattedDate}

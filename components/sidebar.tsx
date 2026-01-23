@@ -1,11 +1,8 @@
 "use client";
 
 import {
-  Archive,
-  BanknoteArrowDown, Inbox,
-  Layers,
-  LayoutDashboard,
-  Package, Wrench
+  Archive, CreditCard, Inbox, LayoutDashboard,
+  Package, Plus, ReceiptText, Users, Wrench
 } from "lucide-react";
 import {
   Sidebar,
@@ -21,7 +18,7 @@ import {
 } from "./ui/sidebar";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { NewEstimateButton } from "./new-estimate-button";
+import { Button } from "./ui/button";
 
 const navGroups = [
   {
@@ -33,24 +30,29 @@ const navGroups = [
         icon: LayoutDashboard,
       },
       {
-        title: "Contas a Pagar",
-        url: "/accounts-payable",
-        icon: BanknoteArrowDown,
+        title: "Faturamento",
+        url: "/billing",
+        icon: CreditCard,
       },
     ],
   },
   {
-    label: "Orçamentos",
+    label: "Operacional",
     items: [
       {
-        title: "Orçamentos Ativos",
+        title: "Orçamentos",
         url: "/estimates",
         icon: Inbox,
         pending: 3,
       },
       {
-        title: "Arquivados",
-        url: "/archived-estimates",
+        title: "Ordens de Serviço",
+        url: "/service-orders",
+        icon: ReceiptText,
+      },
+      {
+        title: "Ordens Arquivadas",
+        url: "/archived-service-orders",
         icon: Archive,
       },
     ],
@@ -70,6 +72,16 @@ const navGroups = [
       },
     ],
   },
+  {
+    label: "Relacionamento com Cliente",
+    items: [
+      {
+        title: "Clientes",
+        url: "/customers",
+        icon: Users,
+      },
+    ],
+  },
 ];
 
 export default function AppSidebar() {
@@ -86,7 +98,12 @@ export default function AppSidebar() {
   return (
     <Sidebar>
       <SidebarHeader className="-mt-1">
-        <NewEstimateButton />
+        <Link href="/new-estimate/customer-details">
+          <Button size={"default"} className="text-sm w-full bg-blue-500 hover:bg-blue-500/80 text-white">
+            <Plus />
+            Novo Orçamento
+          </Button>
+        </Link>
       </SidebarHeader>
       <SidebarContent>
         {navGroups.map((group) => (
