@@ -1,5 +1,4 @@
 import { OrganizationButton } from "@/components/organization-button";
-import { PlanCard } from "@/components/plan-card";
 import { ProfileButtonMobile } from "@/components/profile/profile-button-mobile";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
@@ -47,8 +46,6 @@ export default function Organization() {
             <Store size={16} />
             <span className="text-sm font-semibold">Sua Empresa</span>
           </div>
-
-          <PlanCard />
 
           <Suspense fallback={<Skeleton className="w-full h-12" />}>
             <OrganizationButton />
