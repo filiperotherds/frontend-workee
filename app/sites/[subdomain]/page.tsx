@@ -4,6 +4,10 @@ import verifiedIcon from '@/assets/verified.svg';
 import Link from 'next/link';
 import { getSite } from '@/http/get-site';
 import { notFound } from 'next/navigation';
+import { Mail, MapPin, Phone } from 'lucide-react';
+import { Separator } from '@/components/ui/separator';
+import { Button } from '@/components/ui/button';
+import { RiWhatsappFill } from 'react-icons/ri';
 
 export default async function SubdomainPage({ params }: { params: Promise<{ subdomain: string }> }) {
     const { subdomain } = await params;
@@ -40,8 +44,48 @@ export default async function SubdomainPage({ params }: { params: Promise<{ subd
                         <Image src={verifiedIcon} alt='verified' />
                     </div>
 
-                    <div className='flex flex-row items-center justify-center space-x-4'>
+                    <div className='w-full max-w-[420px] flex flex-wrap items-center justify-center gap-4 pointer-events-none'>
+                        <div className='flex flex-row items-center justify-center space-x-1'>
+                            <MapPin size={14} className='text-muted-foreground' />
 
+                            <span className='text-sm text-primary font-medium'>
+                                {siteData.city}
+                            </span>
+                        </div>
+
+                        {siteData.phone
+                            && <div className='flex flex-row items-center justify-center space-x-1'>
+                                <Phone size={14} className='text-muted-foreground' />
+
+                                <span className='text-sm text-primary font-medium'>
+                                    {siteData.phone}
+                                </span>
+                            </div>
+                        }
+
+                        {siteData.email
+                            && <div className='flex flex-row items-center justify-center space-x-1'>
+                                <Mail size={14} className='text-muted-foreground' />
+
+                                <span className='text-sm text-primary font-medium'>
+                                    {siteData.email}
+                                </span>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <div className='p-8 w-full'>
+                <div className='w-full max-w-[1200px] flex flex-row items-start justify-center'>
+                    <div className='w-full max-w-[300px] flex flex-col items-start justify-start gap-2'>
+                        <Button size={'lg'} className='w-full bg-green-600 hover:bg-green-600/80'>
+                            <RiWhatsappFill color='#fff' />
+                            Chamar no Whatsapp
+                        </Button>
+                        <div className='w-full flex flex-col p-2 bg-white shadow-sm rounded-xl'>
+
+                        </div>
                     </div>
                 </div>
             </div>

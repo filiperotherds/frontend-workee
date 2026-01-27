@@ -58,8 +58,7 @@ export function EstimateForm() {
   };
 
   const [{ errors, message, success }, handleSubmit, isPending] = useFormState(
-    () => {},
-    //createNewEstimate,
+    createNewEstimate,
     () => {
       router.push("/estimates");
     }
