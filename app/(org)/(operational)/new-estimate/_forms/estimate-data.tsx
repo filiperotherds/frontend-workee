@@ -169,13 +169,13 @@ export function EstimateData({
                 </div>
               </div>
 
-              <div className="col-span-1 flex justify-end pt-2">
+              <div className="col-span-1 flex justify-end">
                 <Button
                   size={"icon"}
                   variant={"ghost"}
                   type="button"
                   onClick={() => removeItem(index)}
-                  className="text-muted-foreground hover:text-destructive transition-colors"
+                  className="text-muted-foreground hover:text-destructive hover:bg-destructive/5 transition-colors"
                 >
                   <Trash2 size={18} />
                 </Button>

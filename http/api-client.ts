@@ -25,4 +25,5 @@ export const api = ky.create({
       },
     ],
   },
+  cache: "no-store"
 });
