@@ -6,28 +6,49 @@ import {
   InputGroupAddon,
   InputGroupInput,
 } from "@/components/ui/input-group";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
 import { FolderOpen, History, Search } from "lucide-react";
 import Link from "next/link";
 
 interface EstimateSummary {
   id: string;
-  estimateNo: string;
-  date: string;
-  dueDate: string;
-  tax: number;
-  status: string;
+  estimateNo: number;
+  description: string | null;
+  status: "pending" | "approved" | "refused";
+  createdAt: string;
+  validity: string | null;
+
+  deliveryDeadline: string | null;
+  warrantyTerms: string | null;
+  paymentMethod: "";
+  installments: number;
+  downPayment: string | number | null;
+
+  organizationId: string | null;
+  customerId: string | null;
+
   customer: {
-    name: string;
-    address: string;
-  };
+    name: string | null;
+    email: string | null;
+    address: string | null;
+    phone: string | null;
+  } | null;
+
   items: {
-    qty: number;
+    id: string;
     description: string;
-    unitPrice: number;
+    quantity: number;
+    unitValue: number;
+    estimateId: string;
+    productId: string | null;
   }[];
 }
+[];
 
 interface EstimateListProps {
   estimates: EstimateSummary[];
@@ -50,7 +71,6 @@ export function EstimateList({
           </InputGroupAddon>
         </InputGroup>
 
-
         <Tooltip>
           <TooltipTrigger asChild>
             <Link href="/estimates/history">
@@ -67,7 +87,6 @@ export function EstimateList({
             <p>Histórico</p>
           </TooltipContent>
         </Tooltip>
-
       </div>
 
       <div className="flex flex-col space-y-8 flex-1 overflow-y-auto min-h-0">
@@ -76,19 +95,9 @@ export function EstimateList({
             Solicitações Pendentes
           </label>
 
-          <div className="flex flex-col space-y-1">
-            <div className="flex flex-col items-center justify-center space-y-2">
-              <div className="size-10 flex items-center justify-center rounded-lg bg-secondary">
-                <FolderOpen size={20} className="text-muted-foreground" />
-              </div>
-
-              <h1 className="text-xs text-primary">Sem Solicitações Ainda</h1>
-
-              <p className="text-xs text-muted-foreground text-center">
-                Suas solicitações de orçamentos pendentes aparecerão aqui.
-              </p>
-            </div>
-          </div>
+          <h1 className="text-xs text-primary text-center">
+            Sem novas solicitações.
+          </h1>
         </div>
 
         <div className="flex flex-col space-y-4">
@@ -97,46 +106,63 @@ export function EstimateList({
           </label>
 
           <div className="flex flex-col space-y-1">
-            {estimates.map((estimate) => {
-              const total =
-                estimate.items.reduce(
-                  (sum, item) => sum + item.unitPrice * item.qty,
-                  0
-                ) + estimate.tax;
-
-              const date = new Date(estimate.date);
-              const formattedDate = date.toLocaleDateString("pt-BR", {
-                month: "short",
-                day: "numeric",
-              });
-
-              const isActive = estimate.id === selectedId;
-
-              return (
-                <button
-                  key={estimate.id}
-                  onClick={() => onSelect(estimate.id)}
-                  className={cn(
-                    "group w-full bg-white rounded-md text-left py-2 px-3 hover:bg-zinc-100 transition-colors",
-                    isActive && "bg-zinc-100"
-                  )}
-                >
-                  <div className="flex justify-between items-start gap-4 mb-1">
-                    <span className="font-medium text-sm truncate">
-                      {estimate.estimateNo} - {estimate.customer.name}
-                    </span>
-
-                    <span className="text-xs text-muted-foreground whitespace-nowrap shrink-0">
-                      {formattedDate}
-                    </span>
+            {estimates.length < 1 ? (
+              <div className="flex flex-col space-y-1">
+                <div className="flex flex-col items-center justify-center space-y-2">
+                  <div className="size-10 flex items-center justify-center rounded-lg bg-secondary">
+                    <FolderOpen size={20} className="text-muted-foreground" />
                   </div>
 
-                  <p className="text-xs text-muted-foreground truncate">
-                    {estimate.items[0].description}
+                  <h1 className="text-xs text-primary">
+                    Sem orçamentos ativos
+                  </h1>
+
+                  <p className="text-xs text-muted-foreground text-center">
+                    Sua lista de orçamentos ativos aparecerá aqui.
                   </p>
-                </button>
-              );
-            })}
+                </div>
+              </div>
+            ) : (
+              estimates.map((estimate) => {
+                const total = estimate.items.reduce(
+                  (sum, item) => sum + item.unitValue * item.quantity,
+                  0
+                );
+
+                const date = new Date(estimate.createdAt);
+                const formattedDate = date.toLocaleDateString("pt-BR", {
+                  month: "short",
+                  day: "numeric",
+                });
+
+                const isActive = estimate.id === selectedId;
+
+                return (
+                  <button
+                    key={estimate.id}
+                    onClick={() => onSelect(estimate.id)}
+                    className={cn(
+                      "group w-full bg-white rounded-md text-left py-2 px-3 hover:bg-zinc-100 transition-colors",
+                      isActive && "bg-zinc-100"
+                    )}
+                  >
+                    <div className="flex justify-between items-start gap-4 mb-1">
+                      <span className="font-medium text-sm truncate">
+                        {estimate.customer?.name}
+                      </span>
+
+                      <span className="text-xs text-muted-foreground whitespace-nowrap shrink-0">
+                        {formattedDate}
+                      </span>
+                    </div>
+
+                    <p className="text-xs text-muted-foreground truncate">
+                      {estimate.items[0].description}
+                    </p>
+                  </button>
+                );
+              })
+            )}
           </div>
         </div>
       </div>

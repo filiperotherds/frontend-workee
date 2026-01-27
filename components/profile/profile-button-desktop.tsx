@@ -30,16 +30,12 @@ export async function ProfileButtonDesktop() {
             {user.email}
           </span>
         </div>
-        <div className="p-[2px] rounded-full bg-blue-500">
-          <div className="p-[2px] bg-secondary rounded-full">
-            <Avatar>
-              {user.avatarUrl && <AvatarImage src={user.avatarUrl} />}
-              {user.name && (
-                <AvatarFallback>{getInitials(user.name)}</AvatarFallback>
-              )}
-            </Avatar>
-          </div>
-        </div>
+        <Avatar>
+          {user.avatarUrl && <AvatarImage src={user.avatarUrl} />}
+          {user.name && (
+            <AvatarFallback>{getInitials(user.name)}</AvatarFallback>
+          )}
+        </Avatar>
         <ChevronDown className="size-4 text-muted-foreground" />
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" sideOffset={12} className="w-56">

@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { signInWithEmailAndPassword } from "@/app/(auth)/sign-in/actions";
-import { AlertTriangle, Loader2 } from "lucide-react";
+import { AlertTriangle, Loader } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "./ui/alert";
 import { useFormState } from "@/hooks/use-form-state";
 import { useRouter } from "next/navigation";
@@ -26,6 +26,7 @@ export function LoginForm({
   const [{ errors, message, success }, handleSubmit, isPending] = useFormState(
     signInWithEmailAndPassword,
     async () => {
+      //accountType não existe mais - alterar função
       const { accountType } = await getProfile();
 
       if (accountType === "INDIVIDUAL") {
@@ -92,7 +93,7 @@ export function LoginForm({
         </Field>
         <Field>
           <Button type="submit" disabled={isPending}>
-            {isPending ? <Loader2 className="size-4 animate-spin" /> : "Entrar"}
+            {isPending ? <Loader className="size-4 animate-spin" /> : "Entrar"}
           </Button>
         </Field>
         <FieldSeparator>Ou continue com</FieldSeparator>

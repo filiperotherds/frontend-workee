@@ -15,8 +15,6 @@ export default async function OrgAppLayout({
     redirect("/sign-in");
   }
 
-  
-
   return (
     <div className="w-full font-sans">
       <div className="w-full h-full">

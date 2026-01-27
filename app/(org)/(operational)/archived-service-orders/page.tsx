@@ -4,7 +4,8 @@ export default async function ArchivedEstimates() {
   const membership = await getOrganization();
 
   return (
-    <>
-    </>
+    <div>
+      
+    </div>
   );
 }

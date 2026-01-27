@@ -5,27 +5,42 @@ import Image from "next/image";
 import jobbleLogo from "@/assets/jobble-logo.png";
 import { formatCNPJ } from "@/lib/cnpj-formatter";
 
-interface EstimateItem {
-  qty: number;
-  description: string;
-  unitPrice: number;
-}
-
 interface Estimate {
   id: string;
-  estimateNo: string;
-  date: string;
-  dueDate: string;
+  estimateNo: number;
+  description: string | null;
+  status: "pending" | "approved" | "refused";
+  createdAt: string;
+  validity: string | null;
+
+  deliveryDeadline: string | null;
+  warrantyTerms: string | null;
+  paymentMethod: "";
+  installments: number;
+  downPayment: string | number | null;
+
+  organizationId: string | null;
+  customerId: string | null;
+
   customer: {
-    name: string;
-    address: string;
-  };
-  items: EstimateItem[];
+    name: string | null;
+    email: string | null;
+    address: string | null;
+    phone: string | null;
+  } | null;
+
+  items: {
+    id: string;
+    description: string;
+    quantity: number;
+    unitValue: number;
+    estimateId: string;
+    productId: string | null;
+  }[];
 }
 
 interface EstimateDocumentProps {
   organization: {
-    type: "INDIVIDUAL" | "ORGANIZATION";
     name: string | null;
     avatarUrl: string | null;
     cnpj: string | null;
@@ -39,7 +54,7 @@ const EstimateDocument = forwardRef<HTMLDivElement, EstimateDocumentProps>(
     const cnpj = organization?.cnpj ? formatCNPJ(organization.cnpj) : null;
 
     const subtotal = estimate.items.reduce(
-      (acc, item) => acc + item.qty * item.unitPrice,
+      (acc, item) => acc + item.quantity * item.unitValue,
       0
     );
 
@@ -82,9 +97,9 @@ const EstimateDocument = forwardRef<HTMLDivElement, EstimateDocumentProps>(
             <p className="text-xs text-muted-foreground font-semibold mb-1">
               Cliente
             </p>
-            <p className="text-lg font-bold">{estimate.customer.name}</p>
+            <p className="text-lg font-bold">{estimate?.customer?.name}</p>
             <p className="text-sm text-gray-600 max-w-[240px]">
-              {estimate.customer.address}
+              {estimate?.customer?.address}
             </p>
           </div>
 
@@ -93,19 +108,19 @@ const EstimateDocument = forwardRef<HTMLDivElement, EstimateDocumentProps>(
               <span className="font-semibold text-muted-foreground">
                 Data do Orçamento
               </span>
-              <span>{estimate.date}</span>
+              <span>{estimate.createdAt}</span>
             </div>
             <div className="flex justify-between gap-6">
               <span className="font-semibold text-muted-foreground">
                 Prazo de Entrega
               </span>
-              <span> CRIAR CAMPO </span>
+              <span> {estimate?.deliveryDeadline} </span>
             </div>
             <div className="flex justify-between gap-6">
               <span className="font-semibold text-muted-foreground">
                 Garantia
               </span>
-              <span> GERAR CAMPO </span>
+              <span> {estimate?.warrantyTerms} </span>
             </div>
           </div>
         </div>
@@ -123,13 +138,15 @@ const EstimateDocument = forwardRef<HTMLDivElement, EstimateDocumentProps>(
           <tbody>
             {estimate.items.map((item, i) => (
               <tr key={i} className="border-b text-sm">
-                <td className="py-3 px-3 text-center font-bold">{item.qty}</td>
+                <td className="py-3 px-3 text-center font-bold">
+                  {item.quantity}
+                </td>
                 <td className="py-3 px-3">{item.description}</td>
                 <td className="py-3 px-3 text-right">
-                  R${item.unitPrice.toFixed(2)}
+                  R${item.unitValue.toFixed(2)}
                 </td>
                 <td className="py-3 px-3 text-right font-semibold">
-                  R${(item.qty * item.unitPrice).toFixed(2)}
+                  R${(item.quantity * item.unitValue).toFixed(2)}
                 </td>
               </tr>
             ))}
