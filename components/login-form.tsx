@@ -104,7 +104,7 @@ export function LoginForm({
             placeholder="email@jobble.com.br"
           />
           {errors?.email && (
-            <p className="text-xs font-medium text-red-500">
+            <p className="text-xs font-medium text-destructive">
               {errors.email[0]}
             </p>
           )}
@@ -121,7 +121,7 @@ export function LoginForm({
           </div>
           <Input className="text-primary" id="password" name="password" type="password" />
           {errors?.password && (
-            <p className="text-xs font-medium text-red-500">
+            <p className="text-xs font-medium text-destructive">
               {errors.password[0]}
             </p>
           )}

@@ -3,7 +3,7 @@ import { LoginForm } from "@/components/login-form";
 import PostCard from "@/components/post-card";
 import Link from "next/link";
 
-import logo from "@/assets/jobble-logo-white.png";
+import logo from "@/assets/jobble-teste.png";
 
 export default function SignIn() {
   return (
@@ -14,7 +14,7 @@ export default function SignIn() {
             <img
               src={logo.src}
               alt="Jobble"
-              className="w-20"
+              className="w-24"
             />
           </Link>
         </div>
@@ -36,7 +36,7 @@ export default function SignIn() {
             <span className="text-[160px] leading-none text-muted-foreground/30">“</span>
           </div>
           <span className="text-primary z-10 max-w-lg text-xl">
-            Uma ferramenta que ajuda de verdade! Acompanhar as métricas e ver o número de cliques que meu WhatsApp tá recebendo é muito bom. Fora que fazer o orçamento por la economiza um bom tempo. Pra quem vive na correria, é uma mão na roda.
+            Uma ferramenta que ajuda de verdade. Acompanhar as métricas e ver o número de cliques que meu WhatsApp tá recebendo é muito bom. Fora que fazer o orçamento por la economiza um bom tempo, pra quem vive na correria, é uma mão na roda.
           </span>
           <a href="https://chaveiropanorama.jobble.com.br" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4">
             <img src="https://osqinylytyyjfppindqy.supabase.co/storage/v1/object/public/jobble-public/chaveiro-panorama.jpg" alt="Chaveiro Panorama" className="size-12 rounded-full" />
