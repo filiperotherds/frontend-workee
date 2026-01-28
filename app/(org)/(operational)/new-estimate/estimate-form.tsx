@@ -2,7 +2,7 @@
 
 import { NewEstimateSteps } from "@/components/new-estimate-steps";
 import { useState } from "react";
-import { CustomerData } from "./_forms/customer-data";
+import { CustomerData } from "./(forms)/customer-data";
 import { EstimateFormSchema } from "./estimate-form-schema";
 import { Button } from "@/components/ui/button";
 import { Check, ChevronLeft, ChevronRight, Loader } from "lucide-react";
@@ -11,7 +11,7 @@ import { steps } from "@/app/(org)/(operational)/new-estimate/steps";
 import { useFormState } from "@/hooks/use-form-state";
 import { createNewEstimate } from "./actions";
 import { useRouter } from "next/navigation";
-import { EstimateData } from "./_forms/estimate-data";
+import { EstimateData } from "./(forms)/estimate-data";
 
 export function EstimateForm() {
   const router = useRouter();

@@ -8,8 +8,8 @@ interface GetSiteResponse {
     phone: string | null;
     email: string | null;
     city: string;
-    latitude: Decimal;
-    longitude: Decimal;
+    latitude: number;
+    longitude: number;
     active: boolean | null;
     organizationId: string | null;
 }

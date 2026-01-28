@@ -6,7 +6,7 @@ import { EstimateFormSchema } from "../estimate-form-schema";
 import { Dispatch, SetStateAction } from "react";
 import { Textarea } from "@/components/ui/textarea";
 import { DatePicker } from "@/components/date-picker";
-import { Plus, Trash2 } from "lucide-react";
+import { BookMarked, Plus, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   InputGroup,
@@ -31,7 +31,7 @@ export function EstimateData({
       items: [
         ...(prev.items || []),
         {
-          productId: crypto.randomUUID(), // Gera um ID temporário para o item
+          productId: crypto.randomUUID(),
           name: "",
           quantity: 1,
           unitValue: 0,
@@ -93,14 +93,20 @@ export function EstimateData({
       <div className="space-y-4">
         <div className="flex items-center justify-between">
           <FieldLabel>Itens do Orçamento</FieldLabel>
-          <Button
-            onClick={addItem}
-            size="sm"
-            variant="outline"
-            className="gap-2"
-          >
-            <Plus size={16} /> Adicionar Item
-          </Button>
+          <div className="flex flex-row items-center space-x-2">
+            <Button
+              onClick={addItem}
+              size="sm"
+              variant="outline"
+              className="gap-2"
+            >
+              <Plus size={16} /> Adicionar Item
+            </Button>
+
+            <Button size="icon-sm" variant="outline" className="gap-2">
+              <BookMarked />
+            </Button>
+          </div>
         </div>
 
         {data.items && data.items.length > 0 && (

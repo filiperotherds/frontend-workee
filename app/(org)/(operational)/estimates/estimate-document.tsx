@@ -98,7 +98,7 @@ const EstimateDocument = forwardRef<HTMLDivElement, EstimateDocumentProps>(
               Cliente
             </p>
             <p className="text-lg font-bold">{estimate?.customer?.name}</p>
-            <p className="text-sm text-gray-600 max-w-[240px]">
+            <p className="text-sm text-gray-600 max-w-60">
               {estimate?.customer?.address}
             </p>
           </div>
